@@ -4,17 +4,15 @@ Created on Tue Jun 26 22:08:02 2018
 
 @author: ring
 """
+from matplotlib import use
+use('Qt4agg')
+import matplotlib.pyplot as plt
 
 import numpy as np
 import glob
 import os
 import csv
 import sys
-
-# start script - change into working dir
-os.chdir('Partikel Tracking 040816')
-
-dirlist = glob.glob('./*')
 
 def getParticleTracks(minTrackLength = 1):
     all_tracks = []
@@ -113,19 +111,60 @@ class particle_track:
             self.dist2refline.append(pointLineDist([self.xpos[i], self.ypos[i]], self.ref))
         posLegs = []
         negLegs = []
+        direction = 1
+        changedDirection = False
         for i in range(self.npos-1):
             if self.dist2refline[i+1] >= self.dist2refline[i]:
-                posLegs.append(self.ds[i])
+                # case with positive direction 
+                if direction == 1:
+                    # direction was positive and remains positive
+                    posLegs.append(self.ds[i])
+                else:
+                    # direction was negative and becomes positive
+                    if len(negLegs) != 0:
+                        self.negRunLength.append(np.sum(negLegs))
+                    negLegs = []
+                    direction = 1
+                    posLegs.append(self.ds[i])
             else:
-                negLegs.append(self.ds[i])
-        self.posRunLength = np.sum(posLegs)
-        self.negRunLength = np.sum(negLegs)
+                # case with negative direction
+                if direction == 1:
+                    changedDirection = True
+                    # direction was positive and becomes negative
+                    if len(posLegs) != 0:
+                        self.posRunLength.append(np.sum(posLegs))
+                    posLegs = []
+                    direction = 0
+                    negLegs.append(self.ds[i])
+                else:
+                    # direction was negative and remains negative
+                    negLegs.append(self.ds[i])
+        '''
+        print '-----'
+        print 'pos. RL' 
+        print self.posRunLength # = np.sum(posLegs)
+        print 'neg. RL'
+        print self.negRunLength # = np.sum(negLegs)
+        if changedDirection == True:
+            print 'at least one change in direction'
+        else:
+            print 'no change in direction'
+        '''
+        print self.dist2refline
+        plt.plot([self.ref[0][0], self.ref[1][0]], [self.ref[0][1], self.ref[1][1]])
+        plt.plot(self.xpos, self.ypos)
+        plt.show()
         return 0
 
 if __name__ == '__main__':
+    # start script - change into working dir
+    os.chdir('Partikel Tracking 040816')
+    dirlist = glob.glob('./*')
+    # go through all directories
     for directory in dirlist:
         os.chdir('./' + directory)
         print 'I am in %s' %os.getcwd()
         minLength = 4
-        saveTracks2File(getParticleTracks(minLength))
+        data = getParticleTracks(minLength)
+        # saveTracks2File(data)
         os.chdir('../')
