@@ -13,9 +13,13 @@
 #   * Mean velocity [my / s]:   0.295253
 #   * Max velocity [my / s]:    0.768851
 #   * Net velocity [my / s]:    0.071659
-#   * Overall RunLength [my]:   2.684732
-#   * Pos. Runlength [my]:      1.576736
-#   * Neg. Runlength [my]:      1.107996
+#   * Runlengths [my]
+#     - positive:
+#            * 0.380296 
+#            * 0.517991 
+#     - negative:
+#            * 0.240709 
+#            * 1.545736 
 # --------------------------------------
 
 # --------------------------------------
@@ -29,9 +33,17 @@
 #   * Mean velocity [my / s]:   0.121952
 #   * Max velocity [my / s]:    0.307929
 #   * Net velocity [my / s]:    0.020417
-#   * Overall RunLength [my]:   2.059412
-#   * Pos. Runlength [my]:      1.064171
-#   * Neg. Runlength [my]:      0.995241
+#   * Runlengths [my]
+#     - positive:
+#            * 0.031000 
+#            * 0.341579 
+#            * 0.227012 
+#            * 0.284662 
+#     - negative:
+#            * 0.375159 
+#            * 0.123000 
+#            * 0.400000 
+#            * 0.277000 
 # --------------------------------------
 
 # --------------------------------------
@@ -45,9 +57,15 @@
 #   * Mean velocity [my / s]:   0.131596
 #   * Max velocity [my / s]:    0.617090
 #   * Net velocity [my / s]:    0.092600
-#   * Overall RunLength [my]:   2.051322
-#   * Pos. Runlength [my]:      1.470147
-#   * Neg. Runlength [my]:      0.581175
+#   * Runlengths [my]
+#     - positive:
+#            * 0.157606 
+#            * 0.285318 
+#            * 0.233857 
+#            * 1.232600 
+#     - negative:
+#            * 0.031000 
+#            * 0.110941 
 # --------------------------------------
 
 # --------------------------------------
@@ -61,9 +79,30 @@
 #   * Mean velocity [my / s]:   0.168323
 #   * Max velocity [my / s]:    0.687840
 #   * Net velocity [my / s]:    0.034091
-#   * Overall RunLength [my]:   9.183344
-#   * Pos. Runlength [my]:      4.016894
-#   * Neg. Runlength [my]:      5.166450
+#   * Runlengths [my]
+#     - positive:
+#            * 0.159082 
+#            * 0.187579 
+#            * 0.061000 
+#            * 0.222918 
+#            * 1.335841 
+#            * 0.625078 
+#            * 0.519661 
+#            * 1.109167 
+#            * 0.369000 
+#            * 0.031000 
+#            * 0.592346 
+#     - negative:
+#            * 0.333098 
+#            * 0.308312 
+#            * 0.184600 
+#            * 0.952961 
+#            * 0.893504 
+#            * 0.531833 
+#            * 0.061000 
+#            * 0.248566 
+#            * 0.069318 
+#            * 0.387480 
 # --------------------------------------
 
 # --------------------------------------
@@ -77,9 +116,11 @@
 #   * Mean velocity [my / s]:   0.838472
 #   * Max velocity [my / s]:    2.061586
 #   * Net velocity [my / s]:    0.154298
-#   * Overall RunLength [my]:   5.445873
-#   * Pos. Runlength [my]:      2.767873
-#   * Neg. Runlength [my]:      2.678000
+#   * Runlengths [my]
+#     - positive:
+#            * 3.341675 
+#     - negative:
+#            * 2.104198 
 # --------------------------------------
 
 # --------------------------------------
@@ -93,9 +134,31 @@
 #   * Mean velocity [my / s]:   0.172933
 #   * Max velocity [my / s]:    0.911883
 #   * Net velocity [my / s]:    0.028954
-#   * Overall RunLength [my]:   7.188465
-#   * Pos. Runlength [my]:      4.497951
-#   * Neg. Runlength [my]:      2.690514
+#   * Runlengths [my]
+#     - positive:
+#            * 1.184536 
+#            * 0.611093 
+#            * 0.165641 
+#            * 0.068425 
+#            * 0.061000 
+#            * 0.565849 
+#            * 0.157846 
+#            * 0.481649 
+#            * 0.093000 
+#            * 0.218213 
+#            * 0.470991 
+#     - negative:
+#            * 0.427931 
+#            * 0.555255 
+#            * 0.067978 
+#            * 0.068425 
+#            * 0.179388 
+#            * 0.375198 
+#            * 0.278729 
+#            * 0.197717 
+#            * 0.087681 
+#            * 0.309135 
+#            * 0.562785 
 # --------------------------------------
 
 # --------------------------------------
@@ -109,9 +172,17 @@
 #   * Mean velocity [my / s]:   0.204708
 #   * Max velocity [my / s]:    0.345040
 #   * Net velocity [my / s]:    0.016966
-#   * Overall RunLength [my]:   2.925075
-#   * Pos. Runlength [my]:      1.861135
-#   * Neg. Runlength [my]:      1.063940
+#   * Runlengths [my]
+#     - positive:
+#            * 0.509788 
+#            * 0.473050 
+#            * 0.440710 
+#            * 0.126606 
+#     - negative:
+#            * 0.852984 
+#            * 0.092000 
+#            * 0.137743 
+#            * 0.292195 
 # --------------------------------------
 
 # --------------------------------------
@@ -125,9 +196,13 @@
 #   * Mean velocity [my / s]:   0.152820
 #   * Max velocity [my / s]:    0.270410
 #   * Net velocity [my / s]:    0.010850
-#   * Overall RunLength [my]:   1.588106
-#   * Pos. Runlength [my]:      0.732355
-#   * Neg. Runlength [my]:      0.855751
+#   * Runlengths [my]
+#     - positive:
+#            * 0.535262 
+#            * 0.320489 
+#     - negative:
+#            * 0.508869 
+#            * 0.223486 
 # --------------------------------------
 
 # --------------------------------------
@@ -141,9 +216,16 @@
 #   * Mean velocity [my / s]:   0.078825
 #   * Max velocity [my / s]:    0.202458
 #   * Net velocity [my / s]:    0.036961
-#   * Overall RunLength [my]:   1.740688
-#   * Pos. Runlength [my]:      0.371593
-#   * Neg. Runlength [my]:      1.369095
+#   * Runlengths [my]
+#     - positive:
+#            * 0.130817 
+#            * 0.449586 
+#            * 0.098031 
+#            * 0.246000 
+#     - negative:
+#            * 0.489136 
+#            * 0.043841 
+#            * 0.283279 
 # --------------------------------------
 
 # --------------------------------------
@@ -157,9 +239,23 @@
 #   * Mean velocity [my / s]:   0.146136
 #   * Max velocity [my / s]:    0.466637
 #   * Net velocity [my / s]:    0.003849
-#   * Overall RunLength [my]:   6.833912
-#   * Pos. Runlength [my]:      3.434197
-#   * Neg. Runlength [my]:      3.399715
+#   * Runlengths [my]
+#     - positive:
+#            * 0.254663 
+#            * 0.515539 
+#            * 0.604901 
+#            * 0.130817 
+#            * 0.191817 
+#            * 0.742155 
+#            * 0.763655 
+#     - negative:
+#            * 0.913962 
+#            * 0.349113 
+#            * 0.543510 
+#            * 0.557459 
+#            * 0.572133 
+#            * 0.400000 
+#            * 0.294190 
 # --------------------------------------
 
 # --------------------------------------
@@ -173,9 +269,14 @@
 #   * Mean velocity [my / s]:   0.504721
 #   * Max velocity [my / s]:    1.589863
 #   * Net velocity [my / s]:    0.361237
-#   * Overall RunLength [my]:   6.556322
-#   * Pos. Runlength [my]:      5.876765
-#   * Neg. Runlength [my]:      0.679556
+#   * Runlengths [my]
+#     - positive:
+#            * 0.224877 
+#            * 2.957771 
+#            * 2.694117 
+#     - negative:
+#            * 0.370000 
+#            * 0.309556 
 # --------------------------------------
 
 # --------------------------------------
@@ -189,9 +290,12 @@
 #   * Mean velocity [my / s]:   0.401690
 #   * Max velocity [my / s]:    1.229708
 #   * Net velocity [my / s]:    0.270502
-#   * Overall RunLength [my]:   3.130769
-#   * Pos. Runlength [my]:      0.068425
-#   * Neg. Runlength [my]:      3.062344
+#   * Runlengths [my]
+#     - positive:
+#            * 2.194306 
+#            * 0.376191 
+#     - negative:
+#            * 0.560271 
 # --------------------------------------
 
 # --------------------------------------
@@ -205,9 +309,18 @@
 #   * Mean velocity [my / s]:   0.246578
 #   * Max velocity [my / s]:    0.985644
 #   * Net velocity [my / s]:    0.108140
-#   * Overall RunLength [my]:   6.726392
-#   * Pos. Runlength [my]:      1.885695
-#   * Neg. Runlength [my]:      4.840697
+#   * Runlengths [my]
+#     - positive:
+#            * 2.120660 
+#            * 0.311089 
+#            * 0.283637 
+#            * 0.098877 
+#            * 2.057570 
+#     - negative:
+#            * 1.052705 
+#            * 0.473943 
+#            * 0.043139 
+#            * 0.284773 
 # --------------------------------------
 
 # --------------------------------------
@@ -221,9 +334,11 @@
 #   * Mean velocity [my / s]:   0.971984
 #   * Max velocity [my / s]:    1.967403
 #   * Net velocity [my / s]:    0.284316
-#   * Overall RunLength [my]:   3.787822
-#   * Pos. Runlength [my]:      2.555656
-#   * Neg. Runlength [my]:      1.232166
+#   * Runlengths [my]
+#     - positive:
+#            * 1.232166 
+#     - negative:
+#            * 2.555656 
 # --------------------------------------
 
 # --------------------------------------
@@ -237,9 +352,16 @@
 #   * Mean velocity [my / s]:   0.337264
 #   * Max velocity [my / s]:    0.972351
 #   * Net velocity [my / s]:    0.038398
-#   * Overall RunLength [my]:   8.762107
-#   * Pos. Runlength [my]:      4.848969
-#   * Neg. Runlength [my]:      3.913138
+#   * Runlengths [my]
+#     - positive:
+#            * 2.373504 
+#            * 0.734091 
+#            * 0.289012 
+#            * 1.179434 
+#     - negative:
+#            * 1.546284 
+#            * 1.350765 
+#            * 1.289017 
 # --------------------------------------
 
 # --------------------------------------
@@ -253,9 +375,20 @@
 #   * Mean velocity [my / s]:   0.142550
 #   * Max velocity [my / s]:    0.455881
 #   * Net velocity [my / s]:    0.014139
-#   * Overall RunLength [my]:   4.814500
-#   * Pos. Runlength [my]:      2.880577
-#   * Neg. Runlength [my]:      1.933923
+#   * Runlengths [my]
+#     - positive:
+#            * 0.062000 
+#            * 0.569172 
+#            * 0.302388 
+#            * 0.437326 
+#            * 0.283854 
+#            * 1.085662 
+#     - negative:
+#            * 0.703131 
+#            * 0.890728 
+#            * 0.067978 
+#            * 0.351262 
+#            * 0.061000 
 # --------------------------------------
 
 # --------------------------------------
@@ -269,9 +402,12 @@
 #   * Mean velocity [my / s]:   0.280676
 #   * Max velocity [my / s]:    0.693942
 #   * Net velocity [my / s]:    0.198821
-#   * Overall RunLength [my]:   4.739781
-#   * Pos. Runlength [my]:      4.145116
-#   * Neg. Runlength [my]:      0.594665
+#   * Runlengths [my]
+#     - positive:
+#            * 0.166012 
+#            * 4.394381 
+#     - negative:
+#            * 0.179388 
 # --------------------------------------
 
 # --------------------------------------
@@ -285,9 +421,15 @@
 #   * Mean velocity [my / s]:   0.173903
 #   * Max velocity [my / s]:    0.339268
 #   * Net velocity [my / s]:    0.065398
-#   * Overall RunLength [my]:   2.033104
-#   * Pos. Runlength [my]:      0.993767
-#   * Neg. Runlength [my]:      1.039337
+#   * Runlengths [my]
+#     - positive:
+#            * 0.253425 
+#            * 0.699159 
+#            * 0.440710 
+#     - negative:
+#            * 0.111819 
+#            * 0.179388 
+#            * 0.348604 
 # --------------------------------------
 
 # --------------------------------------
@@ -301,9 +443,11 @@
 #   * Mean velocity [my / s]:   0.382284
 #   * Max velocity [my / s]:    0.873734
 #   * Net velocity [my / s]:    0.250744
-#   * Overall RunLength [my]:   1.986348
-#   * Pos. Runlength [my]:      0.380297
-#   * Neg. Runlength [my]:      1.606051
+#   * Runlengths [my]
+#     - positive:
+#            * 1.859501 
+#     - negative:
+#            * 0.126846 
 # --------------------------------------
 
 # --------------------------------------
@@ -317,9 +461,14 @@
 #   * Mean velocity [my / s]:   0.094226
 #   * Max velocity [my / s]:    0.200865
 #   * Net velocity [my / s]:    0.032901
-#   * Overall RunLength [my]:   1.223990
-#   * Pos. Runlength [my]:      0.916990
-#   * Neg. Runlength [my]:      0.307000
+#   * Runlengths [my]
+#     - positive:
+#            * 0.185000 
+#            * 0.067978 
+#     - negative:
+#            * 0.157089 
+#            * 0.461000 
+#            * 0.352923 
 # --------------------------------------
 
 # --------------------------------------
@@ -333,9 +482,15 @@
 #   * Mean velocity [my / s]:   0.490890
 #   * Max velocity [my / s]:    1.525556
 #   * Net velocity [my / s]:    0.108773
-#   * Overall RunLength [my]:   7.014333
-#   * Pos. Runlength [my]:      4.541625
-#   * Neg. Runlength [my]:      2.472707
+#   * Runlengths [my]
+#     - positive:
+#            * 1.695690 
+#            * 0.401123 
+#            * 0.678000 
+#     - negative:
+#            * 0.401966 
+#            * 0.374995 
+#            * 3.462558 
 # --------------------------------------
 
 # --------------------------------------
@@ -349,9 +504,20 @@
 #   * Mean velocity [my / s]:   0.168133
 #   * Max velocity [my / s]:    0.396873
 #   * Net velocity [my / s]:    0.065623
-#   * Overall RunLength [my]:   4.804899
-#   * Pos. Runlength [my]:      3.801262
-#   * Neg. Runlength [my]:      1.003637
+#   * Runlengths [my]
+#     - positive:
+#            * 0.965143 
+#            * 0.166012 
+#            * 0.641443 
+#            * 0.657867 
+#            * 0.451475 
+#            * 0.515539 
+#     - negative:
+#            * 0.126606 
+#            * 0.284396 
+#            * 0.240709 
+#            * 0.628862 
+#            * 0.126846 
 # --------------------------------------
 
 # --------------------------------------
@@ -365,9 +531,11 @@
 #   * Mean velocity [my / s]:   0.253035
 #   * Max velocity [my / s]:    0.405437
 #   * Net velocity [my / s]:    0.107557
-#   * Overall RunLength [my]:   1.314771
-#   * Pos. Runlength [my]:      0.000000
-#   * Neg. Runlength [my]:      1.314771
+#   * Runlengths [my]
+#     - positive:
+#            * 0.912856 
+#     - negative:
+#            * 0.401915 
 # --------------------------------------
 
 # --------------------------------------
@@ -381,9 +549,13 @@
 #   * Mean velocity [my / s]:   0.082656
 #   * Max velocity [my / s]:    0.224939
 #   * Net velocity [my / s]:    0.030062
-#   * Overall RunLength [my]:   1.073697
-#   * Pos. Runlength [my]:      0.390845
-#   * Neg. Runlength [my]:      0.682852
+#   * Runlengths [my]
+#     - positive:
+#            * 0.154000 
+#            * 0.292195 
+#            * 0.348429 
+#     - negative:
+#            * 0.279073 
 # --------------------------------------
 
 # --------------------------------------
@@ -397,9 +569,15 @@
 #   * Mean velocity [my / s]:   0.229996
 #   * Max velocity [my / s]:    0.691091
 #   * Net velocity [my / s]:    0.118230
-#   * Overall RunLength [my]:   4.481471
-#   * Pos. Runlength [my]:      3.621318
-#   * Neg. Runlength [my]:      0.860153
+#   * Runlengths [my]
+#     - positive:
+#            * 0.819538 
+#            * 1.024573 
+#            * 1.579367 
+#     - negative:
+#            * 0.903994 
+#            * 0.031000 
+#            * 0.123000 
 # --------------------------------------
 
 # --------------------------------------
@@ -413,8 +591,12 @@
 #   * Mean velocity [my / s]:   0.131504
 #   * Max velocity [my / s]:    0.223424
 #   * Net velocity [my / s]:    0.019530
-#   * Overall RunLength [my]:   0.683293
-#   * Pos. Runlength [my]:      0.358653
-#   * Neg. Runlength [my]:      0.324640
+#   * Runlengths [my]
+#     - positive:
+#            * 0.262640 
+#            * 0.062000 
+#     - negative:
+#            * 0.068425 
+#            * 0.290227 
 # --------------------------------------
 

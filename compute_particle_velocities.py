@@ -44,6 +44,16 @@ def getParticleTracks(minTrackLength = 1):
             all_tracks.append(thistrack)
     return all_tracks
 
+def intersect(p1, p2, p3, p4):
+    # p1 and p2 define the first line
+    # p3 and p4 define the second line
+    A = np.array([[p2[0], -p4[0]], [p2[1], -p4[1]]])
+    b = np.array([p3[0] - p1[0], p3[1] - p1[1]])
+    [l,g] = np.linalg.solve(A, b)
+    intersec = [p1[0] + l*p2[0], p1[1] + l*p2[1]]
+    # print 'Intersection: x = %.1f, y = %.1f' %(intersec[0], intersec[1])
+    return intersec
+    
 def pointLineDist(point, line):
     p = np.array([point[0], point[1], 0])
     ga = np.array([line[0][0], line[0][1], 0])
@@ -72,9 +82,19 @@ def saveTracks2File(listOfTracks):
             datafile.write('#   * Mean velocity [my / s]: %10.6f\n' %track.vmean)
             datafile.write('#   * Max velocity [my / s]:  %10.6f\n' %track.vmax)
             datafile.write('#   * Net velocity [my / s]:  %10.6f\n' %track.vnet)
-            datafile.write('#   * Overall RunLength [my]: %10.6f\n' %track.overallRunLength)
-            datafile.write('#   * Pos. Runlength [my]:    %10.6f\n' %track.posRunLength)
-            datafile.write('#   * Neg. Runlength [my]:    %10.6f\n' %track.negRunLength)
+            datafile.write('#   * Runlengths [my]\n')
+            datafile.write('#     - positive:\n')
+            if len(track.pos_legs) != 0:
+                for leg in track.pos_legs:
+                    datafile.write('#            * %.6f \n' %leg)
+            else:
+                datafile.write('#            * none detected\n')
+            datafile.write('#     - negative:\n')
+            if len(track.neg_legs) != 0:
+                for leg in track.neg_legs:
+                    datafile.write('#            * %.6f \n' %leg)
+            else:
+                datafile.write('#            * none detected\n')
             datafile.write('# --------------------------------------\n\n')
     print '... finished.'
     return 0
@@ -104,56 +124,38 @@ class particle_track:
         self.dsnet = np.sqrt(dxnet**2 + dynet**2)
         self.vnet = self.dsnet / (self.dt * self.npos)
         # compute Runlength
-        self.posRunLength = []
-        self.negRunLength = []
-        self.overallRunLength = np.sum(self.ds)
+        self.xintersec = []
+        self.yintersec = []
+        Lambda = []
         for i in range(self.npos):
-            self.dist2refline.append(pointLineDist([self.xpos[i], self.ypos[i]], self.ref))
-        posLegs = []
-        negLegs = []
-        direction = 1
-        changedDirection = False
-        for i in range(self.npos-1):
-            if self.dist2refline[i+1] >= self.dist2refline[i]:
-                # case with positive direction 
-                if direction == 1:
-                    # direction was positive and remains positive
-                    posLegs.append(self.ds[i])
-                else:
-                    # direction was negative and becomes positive
-                    if len(negLegs) != 0:
-                        self.negRunLength.append(np.sum(negLegs))
-                    negLegs = []
-                    direction = 1
-                    posLegs.append(self.ds[i])
+            refline_direction = [self.ref[1][0] - self.ref[0][0], self.ref[1][1] - self.ref[0][1]]
+            refline_normal = [refline_direction[1], refline_direction[0]]
+            # print refline_direction
+            # print refline_normal
+            intersection = intersect([self.xpos[i], self.ypos[i]], [self.xpos[i] + refline_normal[0], self.ypos[i] + refline_normal[1]], [self.ref[0][0], self.ref[0][1]], [self.ref[1][0], self.ref[1][1]])
+            # print 'intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1])
+            Lambda.append((intersection[0] - self.ref[0][0])/refline_direction[0])
+        indicator = np.sign([Lambda[i+1] - Lambda[i] for i in range(len(Lambda)-1)]) # np.diff(Lambda))
+        self.pos_legs = []
+        self.neg_legs = []
+        counter = self.ds[0]
+        for i in range(1, len(indicator)):
+            if indicator[i] == indicator[i-1]:
+                counter += self.ds[i]
             else:
-                # case with negative direction
-                if direction == 1:
-                    changedDirection = True
-                    # direction was positive and becomes negative
-                    if len(posLegs) != 0:
-                        self.posRunLength.append(np.sum(posLegs))
-                    posLegs = []
-                    direction = 0
-                    negLegs.append(self.ds[i])
+                if indicator[i-1] == 1:
+                    self.pos_legs.append(counter)
+                elif indicator[i-1] == -1:
+                    self.neg_legs.append(counter)
                 else:
-                    # direction was negative and remains negative
-                    negLegs.append(self.ds[i])
-        '''
-        print '-----'
-        print 'pos. RL' 
-        print self.posRunLength # = np.sum(posLegs)
-        print 'neg. RL'
-        print self.negRunLength # = np.sum(negLegs)
-        if changedDirection == True:
-            print 'at least one change in direction'
+                    pass
+                counter = self.ds[i]
+        if indicator[-1] == -1:
+            self.neg_legs.append(counter)
+        elif indicator[-1] == 1:
+            self.pos_legs.append(counter)
         else:
-            print 'no change in direction'
-        '''
-        print self.dist2refline
-        plt.plot([self.ref[0][0], self.ref[1][0]], [self.ref[0][1], self.ref[1][1]])
-        plt.plot(self.xpos, self.ypos)
-        plt.show()
+            pass
         return 0
 
 if __name__ == '__main__':
@@ -166,5 +168,5 @@ if __name__ == '__main__':
         print 'I am in %s' %os.getcwd()
         minLength = 4
         data = getParticleTracks(minLength)
-        # saveTracks2File(data)
+        saveTracks2File(data)
         os.chdir('../')
