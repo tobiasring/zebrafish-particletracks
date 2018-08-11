@@ -160,13 +160,18 @@ class particle_track:
 
 if __name__ == '__main__':
     # start script - change into working dir
-    os.chdir('Partikel Tracking 040816')
+    os.chdir('all exports for calculation')
     dirlist = glob.glob('./*')
     # go through all directories
     for directory in dirlist:
+        print 'walking into %s' %directory
         os.chdir('./' + directory)
-        print 'I am in %s' %os.getcwd()
-        minLength = 4
-        data = getParticleTracks(minLength)
-        saveTracks2File(data)
+        level2dirlist = glob.glob('./*')
+        for directory in level2dirlist:
+            os.chdir('./' + directory)
+            print 'I am in %s' %os.getcwd()
+            minLength = 4
+            data = getParticleTracks(minLength)
+            saveTracks2File(data)
+            os.chdir('../')
         os.chdir('../')
