@@ -39,8 +39,8 @@ def getParticleTracks(minTrackLength = 1):
             if data[j, 1] == trackID:
                 thistrack.xpos.append(data[j, 3])
                 thistrack.ypos.append(data[j, 4])
-        thistrack.compDataOfInterest()
         if len(thistrack.xpos) >= minTrackLength:
+            thistrack.compDataOfInterest()
             all_tracks.append(thistrack)
     return all_tracks
 
@@ -164,10 +164,11 @@ if __name__ == '__main__':
     dirlist = glob.glob('./*')
     # go through all directories
     for directory in dirlist:
-        print 'walking into %s' %directory
+        print '# walking into %s' %directory
         os.chdir('./' + directory)
         level2dirlist = glob.glob('./*')
         for directory in level2dirlist:
+            print '# walking into %s' %directory
             os.chdir('./' + directory)
             print 'I am in %s' %os.getcwd()
             minLength = 4

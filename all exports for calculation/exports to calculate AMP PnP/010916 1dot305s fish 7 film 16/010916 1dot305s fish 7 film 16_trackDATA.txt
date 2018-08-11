@@ -1,0 +1,381 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 010916 1dot305s fish 7 film 16/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 22
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.363412
+#   * Max velocity [my / s]:    1.448704
+#   * Net velocity [my / s]:    0.034452
+#   * Runlengths [my]
+#     - positive:
+#            * 0.941620 
+#            * 0.621477 
+#            * 0.815814 
+#            * 0.654569 
+#            * 0.101518 
+#     - negative:
+#            * 4.283138 
+#            * 0.762130 
+#            * 1.023240 
+#            * 0.137000 
+#            * 0.204377 
+#            * 0.368631 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 43
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.183860
+#   * Max velocity [my / s]:    0.917288
+#   * Net velocity [my / s]:    0.025422
+#   * Runlengths [my]
+#     - positive:
+#            * 1.328557 
+#            * 0.806647 
+#            * 0.348093 
+#            * 0.091000 
+#            * 0.183000 
+#            * 1.086950 
+#            * 0.538597 
+#            * 0.631994 
+#     - negative:
+#            * 1.651394 
+#            * 0.557168 
+#            * 0.395545 
+#            * 0.279693 
+#            * 0.292515 
+#            * 0.747907 
+#            * 0.229000 
+#            * 0.706898 
+#            * 0.156054 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 31
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.301682
+#   * Max velocity [my / s]:    0.793332
+#   * Net velocity [my / s]:    0.047854
+#   * Runlengths [my]
+#     - positive:
+#            * 0.137000 
+#            * 0.572389 
+#            * 0.422147 
+#            * 0.137000 
+#            * 1.487538 
+#            * 0.919472 
+#            * 0.046000 
+#            * 0.144516 
+#            * 0.348093 
+#     - negative:
+#            * 0.550103 
+#            * 0.421930 
+#            * 0.912641 
+#            * 0.593923 
+#            * 0.567515 
+#            * 1.124521 
+#            * 1.014201 
+#            * 0.552508 
+#            * 0.470491 
+#            * 1.334552 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 4
+# --------------------------------------
+#   * Number of track points: 23
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.244003
+#   * Max velocity [my / s]:    0.839154
+#   * Net velocity [my / s]:    0.055445
+#   * Runlengths [my]
+#     - positive:
+#            * 0.622875 
+#            * 0.412839 
+#            * 0.658592 
+#            * 0.651189 
+#            * 0.914961 
+#            * 0.585496 
+#     - negative:
+#            * 0.701567 
+#            * 0.503000 
+#            * 0.188693 
+#            * 1.413915 
+#            * 0.228000 
+#            * 0.092000 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 5
+# --------------------------------------
+#   * Number of track points: 8
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.402674
+#   * Max velocity [my / s]:    1.092190
+#   * Net velocity [my / s]:    0.004426
+#   * Runlengths [my]
+#     - positive:
+#            * 1.418755 
+#            * 0.228000 
+#     - negative:
+#            * 0.232594 
+#            * 0.913000 
+#            * 0.869166 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 6
+# --------------------------------------
+#   * Number of track points: 16
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.681624
+#   * Max velocity [my / s]:    1.340155
+#   * Net velocity [my / s]:    0.615714
+#   * Runlengths [my]
+#     - positive:
+#            * 6.624484 
+#            * 3.217324 
+#            * 2.236701 
+#     - negative:
+#            * 0.277834 
+#            * 0.925108 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 7
+# --------------------------------------
+#   * Number of track points: 32
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.212519
+#   * Max velocity [my / s]:    1.067960
+#   * Net velocity [my / s]:    0.079268
+#   * Runlengths [my]
+#     - positive:
+#            * 0.277834 
+#            * 0.046000 
+#            * 0.183000 
+#            * 0.356455 
+#            * 0.266511 
+#            * 0.737768 
+#            * 0.838619 
+#     - negative:
+#            * 0.101966 
+#            * 0.329492 
+#            * 0.274000 
+#            * 0.283152 
+#            * 1.103954 
+#            * 0.046000 
+#            * 2.325880 
+#            * 1.387280 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 8
+# --------------------------------------
+#   * Number of track points: 30
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.250127
+#   * Max velocity [my / s]:    0.580106
+#   * Net velocity [my / s]:    0.016463
+#   * Runlengths [my]
+#     - positive:
+#            * 1.156463 
+#            * 0.144516 
+#            * 0.824033 
+#            * 0.497182 
+#            * 0.277834 
+#            * 0.596162 
+#            * 0.288716 
+#            * 0.493961 
+#            * 0.320000 
+#     - negative:
+#            * 0.848384 
+#            * 0.753558 
+#            * 0.806165 
+#            * 0.459309 
+#            * 0.137000 
+#            * 0.232594 
+#            * 0.329492 
+#            * 1.257180 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 9
+# --------------------------------------
+#   * Number of track points: 43
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.297701
+#   * Max velocity [my / s]:    1.150229
+#   * Net velocity [my / s]:    0.043374
+#   * Runlengths [my]
+#     - positive:
+#            * 0.477381 
+#            * 0.421171 
+#            * 0.332688 
+#            * 0.046000 
+#            * 0.609594 
+#            * 0.144516 
+#            * 0.383789 
+#            * 1.842696 
+#            * 0.408754 
+#            * 0.688560 
+#            * 1.491899 
+#     - negative:
+#            * 2.580668 
+#            * 0.925058 
+#            * 0.323289 
+#            * 0.128693 
+#            * 0.888835 
+#            * 0.274000 
+#            * 0.305896 
+#            * 0.373516 
+#            * 1.099824 
+#            * 0.046000 
+#            * 1.002710 
+#            * 0.320000 
+#            * 1.126454 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 10
+# --------------------------------------
+#   * Number of track points: 9
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.198036
+#   * Max velocity [my / s]:    0.444764
+#   * Net velocity [my / s]:    0.014115
+#   * Runlengths [my]
+#     - positive:
+#            * 0.577748 
+#            * 0.420520 
+#            * 0.167913 
+#     - negative:
+#            * 0.065054 
+#            * 0.458000 
+#            * 0.368756 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 11
+# --------------------------------------
+#   * Number of track points: 24
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.341471
+#   * Max velocity [my / s]:    1.306033
+#   * Net velocity [my / s]:    0.081908
+#   * Runlengths [my]
+#     - positive:
+#            * 1.696537 
+#            * 1.390254 
+#            * 0.951852 
+#            * 0.494516 
+#            * 0.650530 
+#     - negative:
+#            * 1.028767 
+#            * 0.323289 
+#            * 0.137000 
+#            * 0.228600 
+#            * 0.233574 
+#            * 3.067213 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 12
+# --------------------------------------
+#   * Number of track points: 6
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.520013
+#   * Max velocity [my / s]:    1.001266
+#   * Net velocity [my / s]:    0.411041
+#   * Runlengths [my]
+#     - positive:
+#            * 0.288716 
+#     - negative:
+#            * 3.088771 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 13
+# --------------------------------------
+#   * Number of track points: 18
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.253694
+#   * Max velocity [my / s]:    0.602331
+#   * Net velocity [my / s]:    0.052919
+#   * Runlengths [my]
+#     - positive:
+#            * 0.679063 
+#            * 0.824982 
+#            * 0.665375 
+#     - negative:
+#            * 0.491908 
+#            * 0.637958 
+#            * 0.782428 
+#            * 1.520606 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 14
+# --------------------------------------
+#   * Number of track points: 7
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 34.96, y =  6.86
+#         x =  7.88, y = 14.53
+#   * Mean velocity [my / s]:   0.590275
+#   * Max velocity [my / s]:    1.239747
+#   * Net velocity [my / s]:    0.309923
+#   * Runlengths [my]
+#     - positive:
+#            * 0.905475 
+#     - negative:
+#            * 3.695127 
+# --------------------------------------
+
