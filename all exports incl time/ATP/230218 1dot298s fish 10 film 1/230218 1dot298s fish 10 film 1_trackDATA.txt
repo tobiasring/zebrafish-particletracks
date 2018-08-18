@@ -7,6 +7,7 @@
 # --------------------------------------
 #   * Number of track points: 31
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -36,6 +37,7 @@
 # --------------------------------------
 #   * Number of track points: 15
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -59,6 +61,7 @@
 # --------------------------------------
 #   * Number of track points: 21
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -86,6 +89,7 @@
 # --------------------------------------
 #   * Number of track points: 43
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -121,6 +125,7 @@
 # --------------------------------------
 #   * Number of track points: 43
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -157,6 +162,7 @@
 # --------------------------------------
 #   * Number of track points: 11
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -178,6 +184,7 @@
 # --------------------------------------
 #   * Number of track points: 12
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -200,6 +207,7 @@
 # --------------------------------------
 #   * Number of track points: 18
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -224,6 +232,7 @@
 # --------------------------------------
 #   * Number of track points: 40
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -257,6 +266,7 @@
 # --------------------------------------
 #   * Number of track points: 18
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -282,6 +292,7 @@
 # --------------------------------------
 #   * Number of track points: 8
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -300,6 +311,7 @@
 # --------------------------------------
 #   * Number of track points: 22
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -325,6 +337,7 @@
 # --------------------------------------
 #   * Number of track points: 10
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -345,6 +358,7 @@
 # --------------------------------------
 #   * Number of track points: 15
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17
@@ -367,6 +381,7 @@
 # --------------------------------------
 #   * Number of track points: 33
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.298 secs
 #   * Reference line coordinates:
 #         x = 16.93, y = 17.16
 #         x = 31.38, y = 46.17

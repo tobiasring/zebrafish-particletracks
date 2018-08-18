@@ -7,6 +7,7 @@
 # --------------------------------------
 #   * Number of track points: 16
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02
@@ -29,6 +30,7 @@
 # --------------------------------------
 #   * Number of track points: 37
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02
@@ -61,6 +63,7 @@
 # --------------------------------------
 #   * Number of track points: 25
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02
@@ -92,6 +95,7 @@
 # --------------------------------------
 #   * Number of track points: 28
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02
@@ -124,6 +128,7 @@
 # --------------------------------------
 #   * Number of track points: 9
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02
@@ -143,6 +148,7 @@
 # --------------------------------------
 #   * Number of track points: 20
 #    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
 #   * Reference line coordinates:
 #         x = 14.55, y =  6.32
 #         x = 39.81, y = 24.02

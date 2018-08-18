@@ -76,6 +76,7 @@ def saveTracks2File(listOfTracks):
             else:
                 datafile.write('#   * Number of track points: %d\n' %track.npos)
                 datafile.write('#    -> tracks < %d points discarded!\n' %track.minLength)
+            datafile.write('    * Time interval in this track: %.3f secs\n' %track.dt)
             datafile.write('#   * Reference line coordinates:\n')
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[0][0], track.ref[0][1]))
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[1][0], track.ref[1][1]))
@@ -106,8 +107,8 @@ class particle_track:
         self.ypos = []      # y position in 1e-6 m
         with open('frame interval.txt', 'r') as dtfile:
             self.dt = float(dtfile.read())
-        print 'Time interval is %.3f sec.' %self.dt
-    
+        return None
+        
     def compDataOfInterest(self):
         self.npos = len(self.xpos)
         # compute velocities per path segment
