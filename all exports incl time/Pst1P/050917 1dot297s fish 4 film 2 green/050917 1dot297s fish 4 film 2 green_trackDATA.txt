@@ -1,0 +1,58 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 050917 1dot297s fish 4 film 2 green/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 48
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 37.69, y = 45.69
+#         x =  5.33, y = 13.34
+#   * Mean velocity [my / s]:   0.236518
+#   * Max velocity [my / s]:    0.758899
+#   * Net velocity [my / s]:    0.071739
+#   * Runlengths [my]
+#     - positive:
+#            * none detected
+#     - negative:
+#            * none detected
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 15
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 37.69, y = 45.69
+#         x =  5.33, y = 13.34
+#   * Mean velocity [my / s]:   0.318887
+#   * Max velocity [my / s]:    0.633844
+#   * Net velocity [my / s]:    0.191153
+#   * Runlengths [my]
+#     - positive:
+#            * none detected
+#     - negative:
+#            * none detected
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 23
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 37.69, y = 45.69
+#         x =  5.33, y = 13.34
+#   * Mean velocity [my / s]:   0.325915
+#   * Max velocity [my / s]:    0.830053
+#   * Net velocity [my / s]:    0.012973
+#   * Runlengths [my]
+#     - positive:
+#            * none detected
+#     - negative:
+#            * none detected
+# --------------------------------------
+

@@ -1,0 +1,60 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 050917 1dot297s fish 8 film 1 green/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 36
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 14.84, y = 20.70
+#         x = 20.15, y = 11.27
+#   * Mean velocity [my / s]:   0.127313
+#   * Max velocity [my / s]:    0.424056
+#   * Net velocity [my / s]:    0.018311
+#   * Runlengths [my]
+#     - positive:
+#            * 0.244000 
+#            * 0.367000 
+#            * 0.183000 
+#            * 0.376848 
+#            * 0.172534 
+#            * 0.690323 
+#            * 0.136400 
+#            * 0.550000 
+#     - negative:
+#            * 0.648481 
+#            * 0.456910 
+#            * 0.061000 
+#            * 0.306000 
+#            * 0.061000 
+#            * 0.273695 
+#            * 0.386747 
+#            * 0.434509 
+#            * 0.430934 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 14
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 14.84, y = 20.70
+#         x = 20.15, y = 11.27
+#   * Mean velocity [my / s]:   0.192514
+#   * Max velocity [my / s]:    0.405209
+#   * Net velocity [my / s]:    0.027139
+#   * Runlengths [my]
+#     - positive:
+#            * 0.503989 
+#            * 0.272800 
+#            * 0.712729 
+#     - negative:
+#            * 0.525556 
+#            * 0.696888 
+#            * 0.147267 
+#            * 0.386747 
+# --------------------------------------
+

@@ -1,0 +1,78 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 050917 1dot297s fish 8 film 4 red/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 15
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 23.08, y = 36.88
+#         x = 25.05, y = 25.39
+#   * Mean velocity [my / s]:   0.261624
+#   * Max velocity [my / s]:    0.666028
+#   * Net velocity [my / s]:    0.151006
+#   * Runlengths [my]
+#     - positive:
+#            * 2.868767 
+#            * 0.495227 
+#            * 0.695636 
+#     - negative:
+#            * 0.345249 
+#            * 0.345696 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 6
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 23.08, y = 36.88
+#         x = 25.05, y = 25.39
+#   * Mean velocity [my / s]:   0.698011
+#   * Max velocity [my / s]:    1.443161
+#   * Net velocity [my / s]:    0.522665
+#   * Runlengths [my]
+#     - positive:
+#            * 0.386400 
+#     - negative:
+#            * 4.140199 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 35
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 23.08, y = 36.88
+#         x = 25.05, y = 25.39
+#   * Mean velocity [my / s]:   0.216371
+#   * Max velocity [my / s]:    0.719768
+#   * Net velocity [my / s]:    0.022149
+#   * Runlengths [my]
+#     - positive:
+#            * 0.077000 
+#            * 0.173072 
+#            * 0.078000 
+#            * 0.277627 
+#            * 0.788387 
+#            * 0.108894 
+#            * 0.470346 
+#            * 0.154000 
+#            * 0.416515 
+#            * 1.261204 
+#     - negative:
+#            * 1.684140 
+#            * 0.078000 
+#            * 0.278460 
+#            * 0.172627 
+#            * 0.077000 
+#            * 0.623026 
+#            * 1.910768 
+#            * 0.345249 
+#            * 0.567213 
+# --------------------------------------
+

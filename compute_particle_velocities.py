@@ -101,9 +101,12 @@ def saveTracks2File(listOfTracks):
     
 class particle_track:
     def __init__(self):
-        self.dt = 1.299     # time between two points in seconds
+        self.dt = 0     # time between two points in seconds
         self.xpos = []      # x position in 1e-6 m
         self.ypos = []      # y position in 1e-6 m
+        with open('frame interval.txt', 'r') as dtfile:
+            self.dt = float(dtfile.read())
+        print 'Time interval is %.3f sec.' %self.dt
     
     def compDataOfInterest(self):
         self.npos = len(self.xpos)
@@ -160,7 +163,7 @@ class particle_track:
 
 if __name__ == '__main__':
     # start script - change into working dir
-    os.chdir('all exports for calculation')
+    os.chdir('all exports incl time')
     dirlist = glob.glob('./*')
     # go through all directories
     for directory in dirlist:

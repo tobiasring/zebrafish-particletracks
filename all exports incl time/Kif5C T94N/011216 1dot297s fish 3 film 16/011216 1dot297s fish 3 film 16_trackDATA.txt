@@ -1,0 +1,58 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 011216 1dot297s fish 3 film 16/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 30
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 30.67, y = 36.02
+#         x =  3.97, y = 37.61
+#   * Mean velocity [my / s]:   0.253693
+#   * Max velocity [my / s]:    1.440032
+#   * Net velocity [my / s]:    0.110550
+#   * Runlengths [my]
+#     - positive:
+#            * 0.407710 
+#            * 0.291338 
+#            * 0.565777 
+#            * 0.443636 
+#            * 0.279580 
+#     - negative:
+#            * 0.341659 
+#            * 0.066000 
+#            * 0.427595 
+#            * 1.419562 
+#            * 0.296056 
+#            * 1.416424 
+#            * 0.847433 
+#            * 2.739381 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 14
+#    -> tracks < 4 points discarded!
+#   * Reference line coordinates:
+#         x = 30.67, y = 36.02
+#         x =  3.97, y = 37.61
+#   * Mean velocity [my / s]:   0.251525
+#   * Max velocity [my / s]:    0.766533
+#   * Net velocity [my / s]:    0.085081
+#   * Runlengths [my]
+#     - positive:
+#            * 0.186676 
+#            * 0.133000 
+#            * 1.251536 
+#            * 0.481449 
+#            * 1.060193 
+#     - negative:
+#            * 0.533101 
+#            * 0.066000 
+#            * 0.331000 
+#            * 0.198000 
+# --------------------------------------
+
