@@ -138,7 +138,12 @@ class particle_track:
             # print refline_normal
             intersection = intersect([self.xpos[i], self.ypos[i]], [self.xpos[i] + refline_normal[0], self.ypos[i] + refline_normal[1]], [self.ref[0][0], self.ref[0][1]], [self.ref[1][0], self.ref[1][1]])
             # print 'intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1])
-            Lambda.append((intersection[0] - self.ref[0][0])/refline_direction[0])
+            if refline_direction[0] != 0:
+                Lambda.append((intersection[0] - self.ref[0][0])/refline_direction[0])
+            elif refline_direction[1] != 0:
+                Lambda.append((intersection[1] - self.ref[0][1])/refline_direction[1])
+            else:
+                Lambda.append(0)
         indicator = np.sign([Lambda[i+1] - Lambda[i] for i in range(len(Lambda)-1)]) # np.diff(Lambda))
         self.pos_legs = []
         self.neg_legs = []
