@@ -1,0 +1,93 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 260716 0dot871s fish 2 film 6/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 32
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 0.871 secs
+#   * Reference line coordinates:
+#         x = 34.46, y = 24.01
+#         x =  8.82, y = 22.37
+#   * Mean velocity [my / s]:   0.269891
+#   * Max velocity [my / s]:    0.905326
+#   * Net velocity [my / s]:    0.030748
+#   * Runlengths [my]
+#     - positive:
+#            * 3.047472 
+#            * 0.171828 
+#            * 0.827505 
+#     - negative:
+#            * 0.755564 
+#            * 0.750639 
+#            * 0.926889 
+#            * 0.565418 
+#            * 0.242000 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 9
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 0.871 secs
+#   * Reference line coordinates:
+#         x = 34.46, y = 24.01
+#         x =  8.82, y = 22.37
+#   * Mean velocity [my / s]:   0.270658
+#   * Max velocity [my / s]:    0.507335
+#   * Net velocity [my / s]:    0.160932
+#   * Runlengths [my]
+#     - positive:
+#            * 1.582948 
+#     - negative:
+#            * 0.303000 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 4
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 0.871 secs
+#   * Reference line coordinates:
+#         x = 34.46, y = 24.01
+#         x =  8.82, y = 22.37
+#   * Mean velocity [my / s]:   1.153568
+#   * Max velocity [my / s]:   -1.934069
+#   * Net velocity [my / s]:    0.804296
+#   * Runlengths [my]
+#     - positive:
+#            * 0.868289 
+#     - negative:
+#            * 1.684574 
+#            * 0.461411 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 4
+# --------------------------------------
+#   * Number of track points: 14
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 0.871 secs
+#   * Reference line coordinates:
+#         x = 34.46, y = 24.01
+#         x =  8.82, y = 22.37
+#   * Mean velocity [my / s]:   0.436802
+#   * Max velocity [my / s]:    1.993133
+#   * Net velocity [my / s]:    0.288464
+#   * Runlengths [my]
+#     - positive:
+#            * 0.061000 
+#            * 0.121000 
+#            * 2.209627 
+#     - negative:
+#            * 1.364366 
+#            * 0.485000 
+#            * 0.249570 
+#            * 0.086267 
+#            * 0.369076 
+# --------------------------------------
+

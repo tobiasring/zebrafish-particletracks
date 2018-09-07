@@ -1,0 +1,80 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 050917 1dot297s fish 5 film 2 red/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 11
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
+#   * Reference line coordinates:
+#         x = 10.50, y =  3.50
+#         x = 36.10, y = 33.44
+#   * Mean velocity [my / s]:   0.559904
+#   * Max velocity [my / s]:   -1.366571
+#   * Net velocity [my / s]:    0.375767
+#   * Runlengths [my]
+#     - positive:
+#            * 1.339517 
+#            * 1.674688 
+#            * 0.332032 
+#            * 0.241000 
+#     - negative:
+#            * 0.161000 
+#            * 1.071754 
+#            * 1.772443 
+#            * 0.179780 
+#            * 0.489745 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 9
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
+#   * Reference line coordinates:
+#         x = 10.50, y =  3.50
+#         x = 36.10, y = 33.44
+#   * Mean velocity [my / s]:   0.474473
+#   * Max velocity [my / s]:    0.963901
+#   * Net velocity [my / s]:    0.244543
+#   * Runlengths [my]
+#     - positive:
+#            * 1.118594 
+#            * 1.250179 
+#     - negative:
+#            * 1.155390 
+#            * 0.804000 
+#            * 0.594970 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 18
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.297 secs
+#   * Reference line coordinates:
+#         x = 10.50, y =  3.50
+#         x = 36.10, y = 33.44
+#   * Mean velocity [my / s]:   0.464772
+#   * Max velocity [my / s]:    1.059597
+#   * Net velocity [my / s]:    0.079997
+#   * Runlengths [my]
+#     - positive:
+#            * 0.612413 
+#            * 0.563000 
+#            * 1.844375 
+#            * 0.161000 
+#            * 0.759884 
+#     - negative:
+#            * 0.751127 
+#            * 0.648578 
+#            * 0.509127 
+#            * 1.172098 
+#            * 2.466463 
+#            * 0.759701 
+# --------------------------------------
+

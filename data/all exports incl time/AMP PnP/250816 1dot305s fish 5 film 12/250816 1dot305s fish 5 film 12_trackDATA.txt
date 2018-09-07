@@ -1,0 +1,193 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: 250816 1dot305s fish 5 film 12/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 6
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.321776
+#   * Max velocity [my / s]:   -0.867750
+#   * Net velocity [my / s]:    0.091662
+#   * Runlengths [my]
+#     - positive:
+#            * 0.717453 
+#     - negative:
+#            * 1.382136 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 13
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.388234
+#   * Max velocity [my / s]:   -1.470836
+#   * Net velocity [my / s]:    0.135999
+#   * Runlengths [my]
+#     - positive:
+#            * 0.383309 
+#            * 0.542853 
+#            * 0.901860 
+#     - negative:
+#            * 1.875800 
+#            * 1.919441 
+#            * 0.456483 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 12
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.234280
+#   * Max velocity [my / s]:   -1.530735
+#   * Net velocity [my / s]:    0.164370
+#   * Runlengths [my]
+#     - positive:
+#            * 0.455844 
+#     - negative:
+#            * 2.084816 
+#            * 0.822431 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 4
+# --------------------------------------
+#   * Number of track points: 5
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   1.045041
+#   * Max velocity [my / s]:   -1.634457
+#   * Net velocity [my / s]:    0.514308
+#   * Runlengths [my]
+#     - positive:
+#            * 2.235372 
+#     - negative:
+#            * 3.219740 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 5
+# --------------------------------------
+#   * Number of track points: 10
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.524002
+#   * Max velocity [my / s]:    1.245916
+#   * Net velocity [my / s]:    0.253847
+#   * Runlengths [my]
+#     - positive:
+#            * 1.247635 
+#            * 3.736123 
+#     - negative:
+#            * 1.170650 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 6
+# --------------------------------------
+#   * Number of track points: 14
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.388324
+#   * Max velocity [my / s]:    1.501439
+#   * Net velocity [my / s]:    0.141545
+#   * Runlengths [my]
+#     - positive:
+#            * 0.558395 
+#            * 1.111665 
+#            * 2.099994 
+#            * 0.476875 
+#     - negative:
+#            * 0.804976 
+#            * 1.375209 
+#            * 0.160801 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 7
+# --------------------------------------
+#   * Number of track points: 5
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.380224
+#   * Max velocity [my / s]:    0.660182
+#   * Net velocity [my / s]:    0.264681
+#   * Runlengths [my]
+#     - positive:
+#            * 1.906771 
+#     - negative:
+#            * 0.078000 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 8
+# --------------------------------------
+#   * Number of track points: 10
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.213577
+#   * Max velocity [my / s]:    0.481882
+#   * Net velocity [my / s]:    0.083089
+#   * Runlengths [my]
+#     - positive:
+#            * 0.312000 
+#            * 0.785802 
+#            * 0.628856 
+#     - negative:
+#            * 0.333216 
+#            * 0.198862 
+#            * 0.249722 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 9
+# --------------------------------------
+#   * Number of track points: 9
+#    -> tracks < 4 points discarded!
+    * Time interval in this track: 1.305 secs
+#   * Reference line coordinates:
+#         x = 22.53, y =  8.31
+#         x = 10.18, y = 24.06
+#   * Mean velocity [my / s]:   0.627244
+#   * Max velocity [my / s]:   -1.153579
+#   * Net velocity [my / s]:    0.065608
+#   * Runlengths [my]
+#     - positive:
+#            * 0.471239 
+#            * 0.314428 
+#            * 3.075998 
+#     - negative:
+#            * 1.505420 
+#            * 1.181345 
+# --------------------------------------
+

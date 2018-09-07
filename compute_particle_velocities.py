@@ -4,8 +4,8 @@ Created on Tue Jun 26 22:08:02 2018
 
 @author: ring
 """
-from matplotlib import use
-use('Qt4agg')
+# from matplotlib import use
+# use('Qt4agg')
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -18,13 +18,21 @@ def getParticleTracks(minTrackLength = 1):
     all_tracks = []
     # read reference line information
     refline = []
-    with open('axis points.csv', 'rb') as axisfile:
-        reader = csv.reader(axisfile)
-        for row in reader:
-            if row[5] != 'X':
-                x = float(row[5])
-                y = float(row[6])
-                refline.append([x, y])
+    if os.path.exists('axis points.csv'):
+        with open('axis points.csv', 'rb') as axisfile:
+            reader = csv.reader(axisfile)
+            for row in reader:
+                if row[5] != 'X':
+                    x = float(row[5])
+                    y = float(row[6])
+                    refline.append([x, y])
+    elif os.path.exists('axis points.txt'):
+        with open('axis points.txt', 'r') as axisfile:
+            for line in axisfile:
+                if 'Max' not in line:
+                    x = float(line.split()[5])
+                    y = float(line.split()[6])
+                    refline.append([x, y])
                 
     # read particle track data
     data = np.genfromtxt('tracks.txt', delimiter = '\t', skip_header = 1, missing_values = 'NA')  
@@ -105,8 +113,12 @@ class particle_track:
         self.dt = 0     # time between two points in seconds
         self.xpos = []      # x position in 1e-6 m
         self.ypos = []      # y position in 1e-6 m
-        with open('frame interval.txt', 'r') as dtfile:
-            self.dt = float(dtfile.read())
+        if os.path.exists('frame interval.txt'):
+            with open('frame interval.txt', 'r') as dtfile:
+                self.dt = float(dtfile.read())
+        else:
+            print 'No frame interval file found! Assuming 1.299 ms'
+            self.dt = 1.299
         return None
         
     def compDataOfInterest(self):
@@ -165,11 +177,15 @@ class particle_track:
             self.pos_legs.append(counter)
         else:
             pass
+        vmaxIDX = np.where(self.v == np.max(self.v))[0][0]
+        self.vmax = indicator[vmaxIDX] * self.vmax
+        # plt.plot(self.xpos, self.ypos)
+        # plt.show()
         return 0
 
 if __name__ == '__main__':
     # start script - change into working dir
-    os.chdir('all exports incl time')
+    os.chdir('VIVIT Cdh2')
     dirlist = glob.glob('./*')
     # go through all directories
     for directory in dirlist:
