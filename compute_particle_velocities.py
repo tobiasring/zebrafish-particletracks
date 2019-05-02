@@ -89,8 +89,8 @@ def saveTracks2File(listOfTracks):
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[0][0], track.ref[0][1]))
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[1][0], track.ref[1][1]))
             datafile.write('#   * Mean velocity [my / s]: %10.6f\n' %track.vmean)
-            datafile.write('#   * Max velocity [my / s]:  %10.6f\n' %track.vmax)
-            datafile.write('#   * Net velocity [my / s]:  %10.6f\n' %track.vnet)
+            datafile.write('#   * Max velocity  [my / s]: %10.6f\n' %track.vmax)
+            datafile.write('#   * Net velocity  [my / s]: %10.6f\n' %track.vnet)
             datafile.write('#   * Runlengths [my]\n')
             datafile.write('#     - positive:\n')
             if len(track.pos_legs) != 0:
@@ -184,20 +184,24 @@ class particle_track:
         return 0
 
 if __name__ == '__main__':
+    '''
+    The data to be computed has to be stored in the same level as this file.
+    Put the name of the data directory in the DirName variabel. 
+    Everything else should work. I hope so at least. 
+    '''
+    
+    DirName ='exports for Tobias' 
+    
     # start script - change into working dir
-    os.chdir('VIVIT Cdh2')
+    os.chdir(DirName)
     dirlist = glob.glob('./*')
     # go through all directories
     for directory in dirlist:
         print '# walking into %s' %directory
         os.chdir('./' + directory)
-        level2dirlist = glob.glob('./*')
-        for directory in level2dirlist:
-            print '# walking into %s' %directory
-            os.chdir('./' + directory)
-            print 'I am in %s' %os.getcwd()
-            minLength = 4
-            data = getParticleTracks(minLength)
-            saveTracks2File(data)
-            os.chdir('../')
+        print 'I am in %s' %os.getcwd()
+        minLength = 4
+        data = getParticleTracks(minLength)
+        saveTracks2File(data)
         os.chdir('../')
+    os.chdir('../')

@@ -1,4 +1,0 @@
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-# This is the particle track data of file: 25102017 atoha1KalTA Map4GFP Cadh2-Cherry/tracks.txt
-# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
-
