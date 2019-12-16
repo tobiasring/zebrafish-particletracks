@@ -1,0 +1,105 @@
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+# This is the particle track data of file: testtrack/tracks.txt
+# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
+
+# --------------------------------------
+# Data of Track with ID 1
+# --------------------------------------
+#   * Number of track points: 4
+#    -> tracks < 4 points discarded!
+#   * Time interval in this track:  1.299 secs
+#   * Total duration of this track: 5.196 secs
+#   * Reference line coordinates:
+#         x =  0.84, y = 14.80
+#         x = 33.76, y =  9.22
+#   * Time running  [secs.]:    5.196000
+#   * Time paused   [secs.]:    0.000000
+#   * Relative time paused:     0.000000
+#   * Mean velocity [my / s]:   4.276859
+#   * Max velocity  [my / s]:   7.684401
+#   * Max vel. (pos. dir.):     7.684401
+#   * Max vel. (neg. dir.):     5.146176
+#   * Net velocity  [my / s]:   0.772937
+#   * Runlengths [my]
+#     - positive:
+#            * 9.982037 
+#     - negative:
+#            * 6.684883 
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 2
+# --------------------------------------
+#   * Number of track points: 6
+#    -> tracks < 4 points discarded!
+#   * Time interval in this track:  1.299 secs
+#   * Total duration of this track: 7.794 secs
+#   * Reference line coordinates:
+#         x =  0.84, y = 14.80
+#         x = 33.76, y =  9.22
+#   * Time running  [secs.]:    7.794000
+#   * Time paused   [secs.]:    0.000000
+#   * Relative time paused:     0.000000
+#   * Mean velocity [my / s]:   0.526864
+#   * Max velocity  [my / s]:   0.709891
+#   * Max vel. (pos. dir.):     2.634318
+#   * Max vel. (neg. dir.):          nan
+#   * Net velocity  [my / s]:   0.438862
+#   * Runlengths [my]
+#     - positive:
+#            * 3.421980 
+#     - negative:
+#            * none detected
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 3
+# --------------------------------------
+#   * Number of track points: 8
+#    -> tracks < 4 points discarded!
+#   * Time interval in this track:  1.299 secs
+#   * Total duration of this track: 10.392 secs
+#   * Reference line coordinates:
+#         x =  0.84, y = 14.80
+#         x = 33.76, y =  9.22
+#   * Time running  [secs.]:   10.392000
+#   * Time paused   [secs.]:    0.000000
+#   * Relative time paused:     0.000000
+#   * Mean velocity [my / s]:   0.498144
+#   * Max velocity  [my / s]:   0.645919
+#   * Max vel. (pos. dir.):     3.487007
+#   * Max vel. (neg. dir.):          nan
+#   * Net velocity  [my / s]:   0.435402
+#   * Runlengths [my]
+#     - positive:
+#            * 4.529622 
+#     - negative:
+#            * none detected
+# --------------------------------------
+
+# --------------------------------------
+# Data of Track with ID 4
+# --------------------------------------
+#   * Number of track points: 10
+#    -> tracks < 4 points discarded!
+#   * Time interval in this track:  1.299 secs
+#   * Total duration of this track: 12.990 secs
+#   * Reference line coordinates:
+#         x =  0.84, y = 14.80
+#         x = 33.76, y =  9.22
+#   * Time running  [secs.]:   10.392000
+#   * Time paused   [secs.]:    2.598000
+#   * Relative time paused:     0.200000
+#   * Mean velocity [my / s]:   2.011087
+#   * Max velocity  [my / s]:  -3.854984
+#   * Max vel. (pos. dir.):     7.858647
+#   * Max vel. (neg. dir.):     7.696031
+#   * Net velocity  [my / s]:   0.262146
+#   * Runlengths [my]
+#     - positive:
+#            * 10.208383 
+#            * 3.306087 
+#     - negative:
+#            * 9.997144 
+# --------------------------------------
+

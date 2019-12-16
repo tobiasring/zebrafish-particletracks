@@ -4,8 +4,6 @@ Created on Tue Jun 26 22:08:02 2018
 
 @author: ring
 """
-# from matplotlib import use
-# use('Qt4agg')
 import matplotlib.pyplot as plt
 
 import numpy as np
@@ -14,20 +12,20 @@ import os
 import csv
 import sys
 
-def getParticleTracks(minTrackLength = 1):
+def getParticleTracks(path2file, minTrackLength = 1):
     all_tracks = []
     # read reference line information
     refline = []
-    if os.path.exists('axis points.csv'):
-        with open('axis points.csv', 'rb') as axisfile:
+    if os.path.exists(path2file + 'axis points.csv'):
+        with open(path2file + 'axis points.csv', 'rb') as axisfile:
             reader = csv.reader(axisfile)
             for row in reader:
                 if row[5] != 'X':
                     x = float(row[5])
                     y = float(row[6])
                     refline.append([x, y])
-    elif os.path.exists('axis points.txt'):
-        with open('axis points.txt', 'r') as axisfile:
+    elif os.path.exists(path2file + 'axis points.txt'):
+        with open(path2file + 'axis points.txt', 'r') as axisfile:
             for line in axisfile:
                 if 'Max' not in line:
                     x = float(line.split()[5])
@@ -35,11 +33,12 @@ def getParticleTracks(minTrackLength = 1):
                     refline.append([x, y])
                 
     # read particle track data
-    data = np.genfromtxt('tracks.txt', delimiter = '\t', skip_header = 1, missing_values = 'NA')  
+    data = np.genfromtxt(path2file + 'tracks.txt', delimiter = '\t', skip_header = 1, missing_values = 'NA')
     nObservs = int(np.max(data[:,0]))
     nTracks = int(np.max(data[:,1]))
     for trackID in range(1, nTracks + 1):
-        thistrack = particle_track()
+        thistrack = particle_track(path2file)
+        thistrack.path = path2file
         thistrack.trackID = trackID
         thistrack.ref = refline
         thistrack.minLength = minTrackLength
@@ -68,10 +67,10 @@ def pointLineDist(point, line):
     gb = np.array([line[1][0] - line[0][0], line[1][1] - line[0][1], 0])
     return np.linalg.norm(np.cross(p - ga, gb))/np.linalg.norm(gb)
     
-def saveTracks2File(listOfTracks):
+def saveTracks2File(path2file, listOfTracks):
     print 'Writing data to file in ASCII format...'
-    fname = os.getcwd().split('/')[-1].split('.')[0]
-    with open(fname + '_trackDATA.txt', 'w') as datafile:
+    fname = path2file.split(os.sep)[-2]
+    with open(path2file + fname + '_trackDATA.txt', 'w') as datafile:
         datafile.write('# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n')
         datafile.write('# This is the particle track data of file: %s\n' %(fname + '/tracks.txt'))
         datafile.write('# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n\n')
@@ -84,12 +83,18 @@ def saveTracks2File(listOfTracks):
             else:
                 datafile.write('#   * Number of track points: %d\n' %track.npos)
                 datafile.write('#    -> tracks < %d points discarded!\n' %track.minLength)
-            datafile.write('    * Time interval in this track: %.3f secs\n' %track.dt)
+            datafile.write('#   * Time interval in this track:  %.3f secs\n' %track.dt)
+            datafile.write('#   * Total duration of this track: %.3f secs\n' %track.ges_t)
             datafile.write('#   * Reference line coordinates:\n')
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[0][0], track.ref[0][1]))
             datafile.write('#         x = %5.2f, y = %5.2f\n' %(track.ref[1][0], track.ref[1][1]))
+            datafile.write('#   * Time running  [secs.]:  %10.6f\n' %track.t_running)
+            datafile.write('#   * Time paused   [secs.]:  %10.6f\n' %track.t_paused)
+            datafile.write('#   * Relative time paused:   %10.6f\n' %track.fraction_paused)
             datafile.write('#   * Mean velocity [my / s]: %10.6f\n' %track.vmean)
             datafile.write('#   * Max velocity  [my / s]: %10.6f\n' %track.vmax)
+            datafile.write('#   * Max vel. (pos. dir.):   %10.6f\n' %track.vmax_pos)
+            datafile.write('#   * Max vel. (neg. dir.):   %10.6f\n' %track.vmax_neg)
             datafile.write('#   * Net velocity  [my / s]: %10.6f\n' %track.vnet)
             datafile.write('#   * Runlengths [my]\n')
             datafile.write('#     - positive:\n')
@@ -109,20 +114,22 @@ def saveTracks2File(listOfTracks):
     return 0
     
 class particle_track:
-    def __init__(self):
+    def __init__(self, path):
+        self.path = path
         self.dt = 0     # time between two points in seconds
         self.xpos = []      # x position in 1e-6 m
         self.ypos = []      # y position in 1e-6 m
-        if os.path.exists('frame interval.txt'):
-            with open('frame interval.txt', 'r') as dtfile:
+        if os.path.exists(self.path + 'frame interval.txt'):
+            with open(self.path + 'frame interval.txt', 'r') as dtfile:
                 self.dt = float(dtfile.read())
         else:
-            print 'No frame interval file found! Assuming 1.299 ms'
+            print 'No frame interval file found! Assuming 1.299 s'
             self.dt = 1.299
         return None
         
     def compDataOfInterest(self):
         self.npos = len(self.xpos)
+        self.ges_t = self.npos * self.dt
         # compute velocities per path segment
         self.v = []
         self.ds = []
@@ -130,9 +137,19 @@ class particle_track:
         for i in range(1, self.npos):
             dx = np.abs(self.xpos[i] - self.xpos[i-1])
             dy = np.abs(self.ypos[i] - self.ypos[i-1])
-            self.ds.append(np.sqrt(dx** 2 + dy**2))
-            self.v.append(self.ds[-1] / self.dt)
+            self.ds.append(np.sqrt(dx**2 + dy**2))
+            v = self.ds[-1] / self.dt
+            self.v.append(v)
+        self.v = np.array(self.v)
         self.vmean = np.mean(self.v)
+        n_paused = np.sum(np.where(self.v <= .19, 1, 0))
+        self.t_paused = n_paused * self.dt
+        self.t_running = (self.npos - n_paused) * self.dt
+        self.fraction_paused = self.t_paused / self.ges_t
+
+        '''
+        alle V < 0.19 mym/s sind Pausen! aungeben, wieviel Zeit Pause, wieviel Zeit Bewegung!
+        '''
         self.vmax = np.max(self.v)
         # compute net velocity
         dxnet = np.abs(self.xpos[-1] - self.xpos[0])
@@ -144,7 +161,9 @@ class particle_track:
         self.yintersec = []
         Lambda = []
         for i in range(self.npos):
-            refline_direction = [self.ref[1][0] - self.ref[0][0], self.ref[1][1] - self.ref[0][1]]
+            # the following refers to the definition of the ref-line:
+            # the second point is the start, the first point is the target
+            refline_direction = [self.ref[0][0] - self.ref[1][0], self.ref[0][1] - self.ref[1][1]]
             refline_normal = [refline_direction[1], refline_direction[0]]
             # print refline_direction
             # print refline_normal
@@ -179,29 +198,28 @@ class particle_track:
             pass
         vmaxIDX = np.where(self.v == np.max(self.v))[0][0]
         self.vmax = indicator[vmaxIDX] * self.vmax
-        # plt.plot(self.xpos, self.ypos)
-        # plt.show()
+        if self.pos_legs != []:
+            self.vmax_pos = np.max(self.pos_legs) / self.dt
+        else:
+            self.vmax_pos = np.nan
+        if self.neg_legs != []:
+            self.vmax_neg = np.max(self.neg_legs) / self.dt
+        else:
+            self.vmax_neg = np.nan
         return 0
 
 if __name__ == '__main__':
     '''
     The data to be computed has to be stored in the same level as this file.
-    Put the name of the data directory in the DirName variabel. 
+    Put the name of the data directory in the DirName variable. 
     Everything else should work. I hope so at least. 
     '''
-    
-    DirName ='exports for Tobias' 
-    
-    # start script - change into working dir
-    os.chdir(DirName)
-    dirlist = glob.glob('./*')
-    # go through all directories
-    for directory in dirlist:
-        print '# walking into %s' %directory
-        os.chdir('./' + directory)
-        print 'I am in %s' %os.getcwd()
-        minLength = 4
-        data = getParticleTracks(minLength)
-        saveTracks2File(data)
-        os.chdir('../')
-    os.chdir('../')
+
+    minLength = 4
+    DirName = 'testtracks' # 'all Cadherin Tracking data 091219'
+
+    for (root,dirs,files) in os.walk(DirName, topdown=True):
+        if dirs == []:
+            path2file = root + os.sep
+            data = getParticleTracks(path2file, minLength)
+            saveTracks2File(path2file, data)
