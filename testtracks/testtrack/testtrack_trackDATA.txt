@@ -15,16 +15,15 @@
 #   * Time running  [secs.]:    5.196000
 #   * Time paused   [secs.]:    0.000000
 #   * Relative time paused:     0.000000
-#   * Mean velocity [my / s]:   4.276859
-#   * Max velocity  [my / s]:   7.684401
-#   * Max vel. (pos. dir.):     7.684401
-#   * Max vel. (neg. dir.):     5.146176
+#   * Mean velocity [my / s]:   0.846075
+#   * Max vel. (neg)[my / s]:  -4.067873
+#   * Max vel. (pos)[my / s]:   7.684401
 #   * Net velocity  [my / s]:   0.772937
-#   * Runlengths [my]
+#   * Runlengths [my] / Inst. Velocity [my / s]
 #     - positive:
-#            * 9.982037 
+#            * 9.982037 / 7.684401
 #     - negative:
-#            * 6.684883 
+#            * -6.684883 / -2.573088
 # --------------------------------------
 
 # --------------------------------------
@@ -41,13 +40,12 @@
 #   * Time paused   [secs.]:    0.000000
 #   * Relative time paused:     0.000000
 #   * Mean velocity [my / s]:   0.526864
-#   * Max velocity  [my / s]:   0.709891
-#   * Max vel. (pos. dir.):     2.634318
-#   * Max vel. (neg. dir.):          nan
+#   * Max vel. (neg)[my / s]:   0.337182
+#   * Max vel. (pos)[my / s]:   0.709891
 #   * Net velocity  [my / s]:   0.438862
-#   * Runlengths [my]
+#   * Runlengths [my] / Inst. Velocity [my / s]
 #     - positive:
-#            * 3.421980 
+#            * 3.421980 / 0.526864
 #     - negative:
 #            * none detected
 # --------------------------------------
@@ -66,13 +64,12 @@
 #   * Time paused   [secs.]:    0.000000
 #   * Relative time paused:     0.000000
 #   * Mean velocity [my / s]:   0.498144
-#   * Max velocity  [my / s]:   0.645919
-#   * Max vel. (pos. dir.):     3.487007
-#   * Max vel. (neg. dir.):          nan
+#   * Max vel. (neg)[my / s]:   0.381112
+#   * Max vel. (pos)[my / s]:   0.645919
 #   * Net velocity  [my / s]:   0.435402
-#   * Runlengths [my]
+#   * Runlengths [my] / Inst. Velocity [my / s]
 #     - positive:
-#            * 4.529622 
+#            * 4.529622 / 0.498144
 #     - negative:
 #            * none detected
 # --------------------------------------
@@ -90,16 +87,15 @@
 #   * Time running  [secs.]:   10.392000
 #   * Time paused   [secs.]:    2.598000
 #   * Relative time paused:     0.200000
-#   * Mean velocity [my / s]:   2.011087
-#   * Max velocity  [my / s]:  -3.854984
-#   * Max vel. (pos. dir.):     7.858647
-#   * Max vel. (neg. dir.):     7.696031
+#   * Mean velocity [my / s]:   0.300858
+#   * Max vel. (neg)[my / s]:  -3.854984
+#   * Max vel. (pos)[my / s]:   3.106202
 #   * Net velocity  [my / s]:   0.262146
-#   * Runlengths [my]
+#   * Runlengths [my] / Inst. Velocity [my / s]
 #     - positive:
-#            * 10.208383 
-#            * 3.306087 
+#            * 10.208383 / 1.964662
+#            * 3.306087 / 2.545102
 #     - negative:
-#            * 9.997144 
+#            * -9.997144 / -3.848016
 # --------------------------------------
 

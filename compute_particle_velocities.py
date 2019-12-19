@@ -17,7 +17,7 @@ def getParticleTracks(path2file, minTrackLength = 1):
     # read reference line information
     refline = []
     if os.path.exists(path2file + 'axis points.csv'):
-        with open(path2file + 'axis points.csv', 'rb') as axisfile:
+        with open(path2file + 'axis points.csv', 'r') as axisfile:
             reader = csv.reader(axisfile)
             for row in reader:
                 if row[5] != 'X':
@@ -68,7 +68,7 @@ def pointLineDist(point, line):
     return np.linalg.norm(np.cross(p - ga, gb))/np.linalg.norm(gb)
     
 def saveTracks2File(path2file, listOfTracks):
-    print 'Writing data to file in ASCII format...'
+    print('Writing data to file in ASCII format...')
     fname = path2file.split(os.sep)[-2]
     with open(path2file + fname + '_trackDATA.txt', 'w') as datafile:
         datafile.write('# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n')
@@ -92,25 +92,24 @@ def saveTracks2File(path2file, listOfTracks):
             datafile.write('#   * Time paused   [secs.]:  %10.6f\n' %track.t_paused)
             datafile.write('#   * Relative time paused:   %10.6f\n' %track.fraction_paused)
             datafile.write('#   * Mean velocity [my / s]: %10.6f\n' %track.vmean)
-            datafile.write('#   * Max velocity  [my / s]: %10.6f\n' %track.vmax)
-            datafile.write('#   * Max vel. (pos. dir.):   %10.6f\n' %track.vmax_pos)
-            datafile.write('#   * Max vel. (neg. dir.):   %10.6f\n' %track.vmax_neg)
+            datafile.write('#   * Max vel. (neg)[my / s]: %10.6f\n' %track.vmax_neg)
+            datafile.write('#   * Max vel. (pos)[my / s]: %10.6f\n' %track.vmax_pos)
             datafile.write('#   * Net velocity  [my / s]: %10.6f\n' %track.vnet)
-            datafile.write('#   * Runlengths [my]\n')
+            datafile.write('#   * Runlengths [my] / Inst. Velocity [my / s]\n')
             datafile.write('#     - positive:\n')
             if len(track.pos_legs) != 0:
-                for leg in track.pos_legs:
-                    datafile.write('#            * %.6f \n' %leg)
+                for leg, velo in zip(track.pos_legs, track.v_pos_legs):
+                    datafile.write('#            * %.6f / %.6f\n' %(leg, velo))
             else:
                 datafile.write('#            * none detected\n')
             datafile.write('#     - negative:\n')
             if len(track.neg_legs) != 0:
-                for leg in track.neg_legs:
-                    datafile.write('#            * %.6f \n' %leg)
+                for leg, velo in zip(track.neg_legs, track.v_neg_legs):
+                    datafile.write('#            * %.6f / %.6f\n' %(leg, velo))
             else:
                 datafile.write('#            * none detected\n')
             datafile.write('# --------------------------------------\n\n')
-    print '... finished.'
+    print('... finished.')
     return 0
     
 class particle_track:
@@ -123,7 +122,7 @@ class particle_track:
             with open(self.path + 'frame interval.txt', 'r') as dtfile:
                 self.dt = float(dtfile.read())
         else:
-            print 'No frame interval file found! Assuming 1.299 s'
+            print('No frame interval file found! Assuming 1.299 s')
             self.dt = 1.299
         return None
         
@@ -137,12 +136,18 @@ class particle_track:
         for i in range(1, self.npos):
             dx = np.abs(self.xpos[i] - self.xpos[i-1])
             dy = np.abs(self.ypos[i] - self.ypos[i-1])
-            self.ds.append(np.sqrt(dx**2 + dy**2))
+            ini_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[i-1])**2 + np.abs(self.ref[0][1] - self.ypos[i-1])**2)
+            end_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[i])**2 + np.abs(self.ref[0][1] - self.ypos[i])**2)
+            if ini_dist > end_dist:
+                direction = 1
+            else:
+                direction = -1
+            self.ds.append(direction * np.sqrt(dx**2 + dy**2))
             v = self.ds[-1] / self.dt
             self.v.append(v)
         self.v = np.array(self.v)
         self.vmean = np.mean(self.v)
-        n_paused = np.sum(np.where(self.v <= .19, 1, 0))
+        n_paused = np.sum(np.where(np.abs(self.v) <= .19, 1, 0))
         self.t_paused = n_paused * self.dt
         self.t_running = (self.npos - n_paused) * self.dt
         self.fraction_paused = self.t_paused / self.ges_t
@@ -150,11 +155,18 @@ class particle_track:
         '''
         alle V < 0.19 mym/s sind Pausen! aungeben, wieviel Zeit Pause, wieviel Zeit Bewegung!
         '''
-        self.vmax = np.max(self.v)
+        self.vmax_neg = np.min(self.v)
+        self.vmax_pos = np.max(self.v)
         # compute net velocity
         dxnet = np.abs(self.xpos[-1] - self.xpos[0])
         dynet = np.abs(self.ypos[-1] - self.ypos[0])
-        self.dsnet = np.sqrt(dxnet**2 + dynet**2)
+        ini_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[0])**2 + np.abs(self.ref[0][1] - self.ypos[0])**2)
+        end_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[-1])**2 + np.abs(self.ref[0][1] - self.ypos[-1])**2)
+        if ini_dist > end_dist:
+            direction = 1
+        else:
+            direction = -1
+        self.dsnet = direction * np.sqrt(dxnet**2 + dynet**2)
         self.vnet = self.dsnet / (self.dt * self.npos)
         # compute Runlength
         self.xintersec = []
@@ -177,35 +189,34 @@ class particle_track:
                 Lambda.append(0)
         indicator = np.sign([Lambda[i+1] - Lambda[i] for i in range(len(Lambda)-1)]) # np.diff(Lambda))
         self.pos_legs = []
+        self.v_pos_legs = []
         self.neg_legs = []
-        counter = self.ds[0]
+        self.v_neg_legs = []
+        cum_length = self.ds[0]
+        n_legs_cum_length = 1
         for i in range(1, len(indicator)):
             if indicator[i] == indicator[i-1]:
-                counter += self.ds[i]
+                cum_length += self.ds[i]
+                n_legs_cum_length += 1
             else:
                 if indicator[i-1] == 1:
-                    self.pos_legs.append(counter)
+                    self.pos_legs.append(cum_length)
+                    self.v_pos_legs.append(cum_length / (n_legs_cum_length * self.dt))
                 elif indicator[i-1] == -1:
-                    self.neg_legs.append(counter)
+                    self.neg_legs.append(cum_length)
+                    self.v_neg_legs.append(cum_length / (n_legs_cum_length * self.dt))
                 else:
                     pass
-                counter = self.ds[i]
+                cum_length = self.ds[i]
+                n_legs_cum_length = 1
         if indicator[-1] == -1:
-            self.neg_legs.append(counter)
+            self.neg_legs.append(cum_length)
+            self.v_neg_legs.append(cum_length / (n_legs_cum_length * self.dt))
         elif indicator[-1] == 1:
-            self.pos_legs.append(counter)
+            self.pos_legs.append(cum_length)
+            self.v_pos_legs.append(cum_length / (n_legs_cum_length * self.dt))
         else:
             pass
-        vmaxIDX = np.where(self.v == np.max(self.v))[0][0]
-        self.vmax = indicator[vmaxIDX] * self.vmax
-        if self.pos_legs != []:
-            self.vmax_pos = np.max(self.pos_legs) / self.dt
-        else:
-            self.vmax_pos = np.nan
-        if self.neg_legs != []:
-            self.vmax_neg = np.max(self.neg_legs) / self.dt
-        else:
-            self.vmax_neg = np.nan
         return 0
 
 if __name__ == '__main__':
@@ -216,7 +227,7 @@ if __name__ == '__main__':
     '''
 
     minLength = 4
-    DirName = 'testtracks' # 'all Cadherin Tracking data 091219'
+    DirName = 'all Cadherin Tracking data 091219' # 'testtracks'
 
     for (root,dirs,files) in os.walk(DirName, topdown=True):
         if dirs == []:
