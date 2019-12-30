@@ -111,6 +111,81 @@ def saveTracks2File(path2file, listOfTracks):
             datafile.write('# --------------------------------------\n\n')
     print('... finished.')
     return 0
+
+def generate_meta_data(directory):
+    time_running = []
+    time_paused = []
+    max_vel_neg = []
+    max_vel_pos = []
+    rel_time_paused = []
+    net_vel = []
+    mean_vel = []
+    runlengths_pos = []
+    inst_vel_pos = []
+    runlengths_neg = []
+    inst_vel_neg = []
+    for (root,dirs,files) in os.walk(DirName, topdown=True):
+        if directory in root:
+            if dirs == []:
+                for thisfile in files:
+                    if '_trackDATA.txt' in thisfile:
+                        with open(os.path.join(root, thisfile), 'r') as trackfile:
+                            pos_runlengths = False
+                            neg_runlengths = False
+                            for thisline in trackfile:
+                                if 'Data of Track with ID' in thisline:
+                                    pos_runlengths = False
+                                    neg_runlengths = False
+                                if 'Time running' in thisline:
+                                    time_running.append(float(thisline.split(' ')[-1]))          
+                                if 'Time paused' in thisline:
+                                    time_paused.append(float(thisline.split(' ')[-1]))
+                                if 'Max vel. (neg)' in thisline:
+                                    max_vel_neg.append(float(thisline.split(' ')[-1]))
+                                if 'Max vel. (pos)' in thisline:
+                                    max_vel_pos.append(float(thisline.split(' ')[-1]))
+                                if 'Relative time paused' in thisline:
+                                    rel_time_paused.append(float(thisline.split(' ')[-1]))
+                                if 'Net velocity' in thisline:
+                                    net_vel.append(float(thisline.split(' ')[-1]))
+                                if 'Mean velocity' in thisline:
+                                    mean_vel.append(float(thisline.split(' ')[-1]))
+                                if '- positive:' in thisline:
+                                    pos_runlengths = True
+                                    neg_runlengths = False
+                                if '- negative:' in thisline:
+                                    pos_runlengths = False
+                                    neg_runlengths = True
+                                if '--------------------------------------' in thisline:
+                                    pos_runlengths = False
+                                    neg_runlengths = False
+                                if pos_runlengths == True and 'positive' not in thisline:
+                                    if 'none' not in thisline:
+                                        runlengths_pos.append(float(thisline.split(' ')[-3]))
+                                        inst_vel_pos.append(float(thisline.split(' ')[-1]))
+                                if neg_runlengths == True and 'negative' not in thisline:
+                                    if 'none' not in thisline:
+                                        runlengths_neg.append(float(thisline.split(' ')[-3]))
+                                        inst_vel_neg.append(float(thisline.split(' ')[-1]))
+                global_metadata = np.zeros((len(net_vel), 7))
+                global_metadata[:, 0] = time_running
+                global_metadata[:, 1] = time_paused
+                global_metadata[:, 2] = max_vel_neg
+                global_metadata[:, 3] = max_vel_pos
+                global_metadata[:, 4] = rel_time_paused
+                global_metadata[:, 5] = net_vel
+                global_metadata[:, 6] = mean_vel
+                headertxt = 'Time Running, Time Paused, Max Vel. Neg., Max Vel. Pos., Rel. Time Paused, Net Velocity, Mean Velocity'
+                np.savetxt(os.sep.join(root.split(os.sep)[:-1]) + os.sep + 'global_metadata.txt', global_metadata, fmt = '%.6f', delimiter = ',', header = headertxt)
+                with open(os.sep.join(root.split(os.sep)[:-1]) + os.sep + 'runlenghts_metadata.txt', 'w') as runfile:
+                    runfile.write('# # # # # # # # # # # # # # # \n# Posititve Runlenghts\n# # # # # # # # # # # # # # # \n\nRunlength [my], Inst. Velocity [my / s]\n')
+                    for i in range(len(runlengths_pos)):
+                        runfile.write('%10.6f, %10.6f\n' %(runlengths_pos[i], inst_vel_pos[i]))
+                    runfile.write('\n\n# # # # # # # # # # # # # # # \n# Negative Runlenghts\n# # # # # # # # # # # # # # # \n\nRunlength [my], Inst. Velocity [my / s]\n')
+                    for i in range(len(runlengths_neg)):
+                        runfile.write('%10.6f, %10.6f\n' %(runlengths_neg[i], inst_vel_neg[i]))
+                    runfile.write('# # # # # # # # # # # # # # #')
+    return 0
     
 class particle_track:
     def __init__(self, path):
@@ -192,11 +267,11 @@ class particle_track:
         self.v_pos_legs = []
         self.neg_legs = []
         self.v_neg_legs = []
-        cum_length = self.ds[0]
+        cum_length = np.abs(self.ds[0])
         n_legs_cum_length = 1
         for i in range(1, len(indicator)):
             if indicator[i] == indicator[i-1]:
-                cum_length += self.ds[i]
+                cum_length += np.abs(self.ds[i])
                 n_legs_cum_length += 1
             else:
                 if indicator[i-1] == 1:
@@ -207,7 +282,7 @@ class particle_track:
                     self.v_neg_legs.append(cum_length / (n_legs_cum_length * self.dt))
                 else:
                     pass
-                cum_length = self.ds[i]
+                cum_length = np.abs(self.ds[i])
                 n_legs_cum_length = 1
         if indicator[-1] == -1:
             self.neg_legs.append(cum_length)
@@ -218,6 +293,7 @@ class particle_track:
         else:
             pass
         return 0
+    
 
 if __name__ == '__main__':
     '''
@@ -226,11 +302,26 @@ if __name__ == '__main__':
     Everything else should work. I hope so at least. 
     '''
 
+    # set flags for what to do
+    compute_all = False
+    compute_meta = True
+    
+    # set some parameters
     minLength = 4
-    DirName = 'all Cadherin Tracking data 091219' # 'testtracks'
-
-    for (root,dirs,files) in os.walk(DirName, topdown=True):
-        if dirs == []:
-            path2file = root + os.sep
-            data = getParticleTracks(path2file, minLength)
-            saveTracks2File(path2file, data)
+    DirName = 'all Cadherin Tracking data  091219' # 'testtracks' #  'all Cadherin Tracking data  091219_test'
+    
+    if compute_all:
+        # compute full data set for each movie
+        for (root,dirs,files) in os.walk(DirName, topdown=True):    
+            if dirs == []:
+                path2file = root + os.sep
+                data = getParticleTracks(path2file, minLength)
+                saveTracks2File(path2file, data)
+    
+    if compute_meta:
+        # compute meta-data
+        dirs = ['ALLM', 'AMP PnP', 'aTat', 'ATP', 'Brefeldin', 'Control EB3', 'Control Map4 DM', 
+                'DMSO', 'DMSO DM', 'Dynamitin', 'Dynasore', 'Kif1CGCN5C', 'Kif5C T94N', 'Kif5C wt',
+                'Klc1', 'PST green', 'PST red', 'Rab11a', 'Rab11a S25N', 'VIVIT']
+        for thisdir in dirs:
+            generate_meta_data(thisdir)
