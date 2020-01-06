@@ -199,7 +199,6 @@ class particle_track:
         else:
             print('No frame interval file found! Assuming 1.299 s')
             self.dt = 1.299
-        return None
         
     def compDataOfInterest(self):
         self.npos = len(self.xpos)
@@ -208,30 +207,56 @@ class particle_track:
         self.v = []
         self.ds = []
         self.dist2refline = []
+
+        # get direction of movements
+        self.xintersec = []
+        self.yintersec = []
+        Lambda = []
+        for i in range(self.npos):
+            # the following refers to the definition of the ref-line:
+            # the second point is the start, the first point is the target
+            refline_direction = [self.ref[0][0] - self.ref[1][0], self.ref[0][1] - self.ref[1][1]]
+            refline_normal = [refline_direction[1], refline_direction[0]]
+            intersection = intersect([self.xpos[i], self.ypos[i]],
+                                     [self.xpos[i] + refline_normal[0], self.ypos[i] + refline_normal[1]],
+                                     [self.ref[0][0], self.ref[0][1]], [self.ref[1][0], self.ref[1][1]])
+            # print 'intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1])
+            if refline_direction[0] != 0:
+                Lambda.append((intersection[0] - self.ref[0][0]) / refline_direction[0])
+            elif refline_direction[1] != 0:
+                Lambda.append((intersection[1] - self.ref[0][1]) / refline_direction[1])
+            else:
+                Lambda.append(0)
+        indicator = np.sign([Lambda[i + 1] - Lambda[i] for i in range(len(Lambda) - 1)])
+
+
         for i in range(1, self.npos):
             dx = np.abs(self.xpos[i] - self.xpos[i-1])
             dy = np.abs(self.ypos[i] - self.ypos[i-1])
-            ini_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[i-1])**2 + np.abs(self.ref[0][1] - self.ypos[i-1])**2)
-            end_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[i])**2 + np.abs(self.ref[0][1] - self.ypos[i])**2)
-            if ini_dist > end_dist:
-                direction = 1
-            else:
-                direction = -1
-            self.ds.append(direction * np.sqrt(dx**2 + dy**2))
+            self.ds.append(indicator[i-1] * np.sqrt(dx**2 + dy**2))
             v = self.ds[-1] / self.dt
             self.v.append(v)
+
         self.v = np.array(self.v)
         self.vmean = np.mean(self.v)
-        n_paused = np.sum(np.where(np.abs(self.v) <= .19, 1, 0))
+        n_paused = np.sum(np.where(np.abs(self.v) <= .19, 1, 0)) # velocities < .19 my / s are paused
         self.t_paused = n_paused * self.dt
         self.t_running = (self.npos - n_paused) * self.dt
         self.fraction_paused = self.t_paused / self.ges_t
 
-        '''
-        alle V < 0.19 mym/s sind Pausen! aungeben, wieviel Zeit Pause, wieviel Zeit Bewegung!
-        '''
-        self.vmax_neg = np.min(self.v)
-        self.vmax_pos = np.max(self.v)
+        if np.sign(np.min(self.v)) != np.sign(np.max(self.v)):
+            self.vmax_neg = np.min(self.v)
+            self.vmax_pos = np.max(self.v)
+        else:
+            if np.sign(np.min(self.v)) == 1.:
+                self.vmax_neg = np.nan
+                self.vmax_pos = np.max(self.v)
+            elif np.sign(np.max(self.v)) == -1.:
+                self.vmax_pos = np.nan
+                self.vmax_neg = np.min(self.v)
+            else:
+                self.vmax_neg = np.min(self.v)
+                self.vmax_pos = np.max(self.v)
         # compute net velocity
         dxnet = np.abs(self.xpos[-1] - self.xpos[0])
         dynet = np.abs(self.ypos[-1] - self.ypos[0])
@@ -243,26 +268,8 @@ class particle_track:
             direction = -1
         self.dsnet = direction * np.sqrt(dxnet**2 + dynet**2)
         self.vnet = self.dsnet / (self.dt * self.npos)
+
         # compute Runlength
-        self.xintersec = []
-        self.yintersec = []
-        Lambda = []
-        for i in range(self.npos):
-            # the following refers to the definition of the ref-line:
-            # the second point is the start, the first point is the target
-            refline_direction = [self.ref[0][0] - self.ref[1][0], self.ref[0][1] - self.ref[1][1]]
-            refline_normal = [refline_direction[1], refline_direction[0]]
-            # print refline_direction
-            # print refline_normal
-            intersection = intersect([self.xpos[i], self.ypos[i]], [self.xpos[i] + refline_normal[0], self.ypos[i] + refline_normal[1]], [self.ref[0][0], self.ref[0][1]], [self.ref[1][0], self.ref[1][1]])
-            # print 'intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1])
-            if refline_direction[0] != 0:
-                Lambda.append((intersection[0] - self.ref[0][0])/refline_direction[0])
-            elif refline_direction[1] != 0:
-                Lambda.append((intersection[1] - self.ref[0][1])/refline_direction[1])
-            else:
-                Lambda.append(0)
-        indicator = np.sign([Lambda[i+1] - Lambda[i] for i in range(len(Lambda)-1)]) # np.diff(Lambda))
         self.pos_legs = []
         self.v_pos_legs = []
         self.neg_legs = []
@@ -303,12 +310,12 @@ if __name__ == '__main__':
     '''
 
     # set flags for what to do
-    compute_all = False
+    compute_all = True
     compute_meta = True
     
     # set some parameters
     minLength = 4
-    DirName = 'all Cadherin Tracking data  091219' # 'testtracks' #  'all Cadherin Tracking data  091219_test'
+    DirName = 'all Cadherin Tracking data 091219' # 'testtracks' #  'all Cadherin Tracking data  091219_test'
     
     if compute_all:
         # compute full data set for each movie
