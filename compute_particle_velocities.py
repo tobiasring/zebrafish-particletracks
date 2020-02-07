@@ -54,12 +54,18 @@ def getParticleTracks(path2file, minTrackLength = 1):
 def intersect(p1, p2, p3, p4):
     # p1 and p2 define the first line
     # p3 and p4 define the second line
-    A = np.array([[p2[0], -p4[0]], [p2[1], -p4[1]]])
-    b = np.array([p3[0] - p1[0], p3[1] - p1[1]])
-    [l,g] = np.linalg.solve(A, b)
-    intersec = [p1[0] + l*p2[0], p1[1] + l*p2[1]]
-    # print 'Intersection: x = %.1f, y = %.1f' %(intersec[0], intersec[1])
-    return intersec
+    x1 = p1[0]
+    y1 = p1[1]
+    x2 = p2[0]
+    y2 = p2[1]
+    x3 = p3[0]
+    y3 = p3[1]
+    x4 = p4[0]
+    y4 = p4[1]
+    denom = (y4 - y3) * (x2 - x1) - (y2 - y1) * (x4 - x3)
+    xs = ( (x4 - x3) * (x2 * y1 - x1 * y2) - (x2 - x1) * (x4 * y3 - x3 * y4) ) / denom
+    ys = ( (y1 - y2) * (x4 * y3 - x3 * y4) - (y3 - y4) * (x2 * y1 - x1 * y2) ) / denom
+    return [xs, ys]
     
 def pointLineDist(point, line):
     p = np.array([point[0], point[1], 0])
@@ -91,7 +97,8 @@ def saveTracks2File(path2file, listOfTracks):
             datafile.write('#   * Time running  [secs.]:  %10.6f\n' %track.t_running)
             datafile.write('#   * Time paused   [secs.]:  %10.6f\n' %track.t_paused)
             datafile.write('#   * Relative time paused:   %10.6f\n' %track.fraction_paused)
-            datafile.write('#   * Mean velocity [my / s]: %10.6f\n' %track.vmean)
+            datafile.write('#   * Mean vel.(pos)[my / s]: %10.6f\n' %track.vmean_pos)
+            datafile.write('#   * Mean vel.(neg)[my / s]: %10.6f\n' %track.vmean_neg)
             datafile.write('#   * Max vel. (neg)[my / s]: %10.6f\n' %track.vmax_neg)
             datafile.write('#   * Max vel. (pos)[my / s]: %10.6f\n' %track.vmax_pos)
             datafile.write('#   * Net velocity  [my / s]: %10.6f\n' %track.vnet)
@@ -119,7 +126,8 @@ def generate_meta_data(directory):
     max_vel_pos = []
     rel_time_paused = []
     net_vel = []
-    mean_vel = []
+    mean_vel_pos = []
+    mean_vel_neg = []
     runlengths_pos = []
     inst_vel_pos = []
     runlengths_neg = []
@@ -148,8 +156,10 @@ def generate_meta_data(directory):
                                     rel_time_paused.append(float(thisline.split(' ')[-1]))
                                 if 'Net velocity' in thisline:
                                     net_vel.append(float(thisline.split(' ')[-1]))
-                                if 'Mean velocity' in thisline:
-                                    mean_vel.append(float(thisline.split(' ')[-1]))
+                                if 'Mean vel.(pos)' in thisline:
+                                    mean_vel_pos.append(float(thisline.split(' ')[-1]))
+                                if 'Mean vel.(neg)' in thisline:
+                                    mean_vel_neg.append(float(thisline.split(' ')[-1]))
                                 if '- positive:' in thisline:
                                     pos_runlengths = True
                                     neg_runlengths = False
@@ -167,15 +177,16 @@ def generate_meta_data(directory):
                                     if 'none' not in thisline:
                                         runlengths_neg.append(float(thisline.split(' ')[-3]))
                                         inst_vel_neg.append(float(thisline.split(' ')[-1]))
-                global_metadata = np.zeros((len(net_vel), 7))
+                global_metadata = np.zeros((len(net_vel), 8))
                 global_metadata[:, 0] = time_running
                 global_metadata[:, 1] = time_paused
                 global_metadata[:, 2] = max_vel_neg
                 global_metadata[:, 3] = max_vel_pos
                 global_metadata[:, 4] = rel_time_paused
                 global_metadata[:, 5] = net_vel
-                global_metadata[:, 6] = mean_vel
-                headertxt = 'Time Running, Time Paused, Max Vel. Neg., Max Vel. Pos., Rel. Time Paused, Net Velocity, Mean Velocity'
+                global_metadata[:, 6] = mean_vel_pos
+                global_metadata[:, 7] = mean_vel_neg
+                headertxt = 'Time Running, Time Paused, Max Vel. Neg., Max Vel. Pos., Rel. Time Paused, Net Velocity, Mean Velocity Pos., Mean Velocity Neg.'
                 np.savetxt(os.sep.join(root.split(os.sep)[:-1]) + os.sep + 'global_metadata.txt', global_metadata, fmt = '%.6f', delimiter = ',', header = headertxt)
                 with open(os.sep.join(root.split(os.sep)[:-1]) + os.sep + 'runlenghts_metadata.txt', 'w') as runfile:
                     runfile.write('# # # # # # # # # # # # # # # \n# Posititve Runlenghts\n# # # # # # # # # # # # # # # \n\nRunlength [my], Inst. Velocity [my / s]\n')
@@ -203,24 +214,20 @@ class particle_track:
     def compDataOfInterest(self):
         self.npos = len(self.xpos)
         self.ges_t = self.npos * self.dt
-        # compute velocities per path segment
-        self.v = []
-        self.ds = []
-        self.dist2refline = []
 
         # get direction of movements
-        self.xintersec = []
-        self.yintersec = []
         Lambda = []
         for i in range(self.npos):
             # the following refers to the definition of the ref-line:
             # the second point is the start, the first point is the target
-            refline_direction = [self.ref[0][0] - self.ref[1][0], self.ref[0][1] - self.ref[1][1]]
-            refline_normal = [refline_direction[1], refline_direction[0]]
+            dx = self.ref[1][0] - self.ref[0][0]
+            dy = self.ref[1][1] - self.ref[0][1]
+            refline_direction = [dx, dy] / np.sqrt(dx**2 + dy**2)
+            refline_normal = [-1. * refline_direction[1], refline_direction[0]]
             intersection = intersect([self.xpos[i], self.ypos[i]],
                                      [self.xpos[i] + refline_normal[0], self.ypos[i] + refline_normal[1]],
                                      [self.ref[0][0], self.ref[0][1]], [self.ref[1][0], self.ref[1][1]])
-            # print 'intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1])
+            # print('intersects at: x = %.3f and y = %.3f' %(intersection[0], intersection[1]))
             if refline_direction[0] != 0:
                 Lambda.append((intersection[0] - self.ref[0][0]) / refline_direction[0])
             elif refline_direction[1] != 0:
@@ -229,7 +236,11 @@ class particle_track:
                 Lambda.append(0)
         indicator = np.sign([Lambda[i + 1] - Lambda[i] for i in range(len(Lambda) - 1)])
 
+        # compute velocities per path segment
+        self.v = []
+        self.ds = []
 
+        # compute velocities
         for i in range(1, self.npos):
             dx = np.abs(self.xpos[i] - self.xpos[i-1])
             dy = np.abs(self.ypos[i] - self.ypos[i-1])
@@ -237,13 +248,30 @@ class particle_track:
             v = self.ds[-1] / self.dt
             self.v.append(v)
 
+        # compute pausing times
         self.v = np.array(self.v)
-        self.vmean = np.mean(self.v)
-        n_paused = np.sum(np.where(np.abs(self.v) <= .19, 1, 0)) # velocities < .19 my / s are paused
+        if np.all(self.v > 0):
+            self.vmean_neg = np.nan
+            self.vmean_pos = np.mean(self.v)
+        elif np.all(self.v < 0):
+            self.vmean_pos = np.nan
+            self.vmean_neg = np.mean(self.v)
+        else:
+            self.vmean_pos = np.nanmean(np.where(self.v > 0, self.v, np.nan))
+            self.vmean_neg = np.nanmean(np.where(self.v < 0, self.v, np.nan))
+        n_paused = np.sum(np.where(np.abs(self.v) <= .2, 1, 0)) # velocities < .2 my / s are paused
         self.t_paused = n_paused * self.dt
         self.t_running = (self.npos - n_paused) * self.dt
         self.fraction_paused = self.t_paused / self.ges_t
 
+        # compute net velocity
+        dxnet = np.abs(self.xpos[-1] - self.xpos[0])
+        dynet = np.abs(self.ypos[-1] - self.ypos[0])
+        direction = np.sign(Lambda[-1] - Lambda[0])
+        self.dsnet = direction * np.sqrt(dxnet**2 + dynet**2)
+        self.vnet = self.dsnet / (self.dt * self.npos)
+
+        # compute vmax and vmin
         if np.sign(np.min(self.v)) != np.sign(np.max(self.v)):
             self.vmax_neg = np.min(self.v)
             self.vmax_pos = np.max(self.v)
@@ -257,17 +285,6 @@ class particle_track:
             else:
                 self.vmax_neg = np.min(self.v)
                 self.vmax_pos = np.max(self.v)
-        # compute net velocity
-        dxnet = np.abs(self.xpos[-1] - self.xpos[0])
-        dynet = np.abs(self.ypos[-1] - self.ypos[0])
-        ini_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[0])**2 + np.abs(self.ref[0][1] - self.ypos[0])**2)
-        end_dist = np.sqrt(np.abs(self.ref[0][0] - self.xpos[-1])**2 + np.abs(self.ref[0][1] - self.ypos[-1])**2)
-        if ini_dist > end_dist:
-            direction = 1
-        else:
-            direction = -1
-        self.dsnet = direction * np.sqrt(dxnet**2 + dynet**2)
-        self.vnet = self.dsnet / (self.dt * self.npos)
 
         # compute Runlength
         self.pos_legs = []
@@ -315,7 +332,7 @@ if __name__ == '__main__':
     
     # set some parameters
     minLength = 4
-    DirName = 'all Cadherin Tracking data 091219' # 'testtracks' #  'all Cadherin Tracking data  091219_test'
+    DirName = 'all Cadherin Tracking data_noCID' # 'Testset'
     
     if compute_all:
         # compute full data set for each movie
